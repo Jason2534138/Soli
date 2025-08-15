@@ -19,11 +19,11 @@ public class PlayerHealth : MonoBehaviour
 
     public bool isStuned;
 
-    public IntVariable health, maxHealth;
+    //public IntVariable health, maxHealth;
     
     private void Start()
     {
-        healthSystem = new HealthSystem(maxHealth.value);
+        healthSystem = new HealthSystem(100);
         rb = GetComponent<Rigidbody2D>();
         if  (stunBar != null)stunBar.Setup(healthSystem);
         healthBar.Setup(healthSystem);
