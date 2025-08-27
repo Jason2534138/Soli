@@ -84,8 +84,5 @@ public class BladeIdle : BladeGrounded
         currentTargetPoint++;
         if (currentTargetPoint >= _sm.patrolPoints.Length) currentTargetPoint = 0;
     }
-    private void Hit(object sender, EventArgs e)
-    {
-        stateMachine.ChangeState(_sm.bladeAggroState);
-    }
+    
 }

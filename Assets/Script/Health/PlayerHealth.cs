@@ -27,8 +27,7 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if  (stunBar != null)stunBar.Setup(healthSystem);
         healthBar.Setup(healthSystem);
-        healthSystem.HealthReachZero += Die;
-        healthSystem.IsStuned += Stun;
+        
         
 
     }

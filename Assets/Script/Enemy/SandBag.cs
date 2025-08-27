@@ -19,9 +19,7 @@ public class SandBag : MonoBehaviour
     private void Awake()
     {
         health = GetComponent<Health>();
-        health.ZeroHealth += die;
-        health.ZeroStun += Stun;
-        health.HitStun += Hit;
+        
         
 
     }
@@ -38,11 +36,7 @@ public class SandBag : MonoBehaviour
         
 
         if (isDead) state = State.Dead;
-        else if (health.isStuned)
-        {
-            state = State.Stuned;
-            health.isStuned = false;
-        }
+        
         else if (health.healthSystem.GetHealth() != 0) state = State.Idle;
 
         Debug.Log(state);
@@ -68,7 +62,7 @@ public class SandBag : MonoBehaviour
     {
         
         recoverTime += Time.deltaTime;
-        if(!health.isStuned) health.isStuned = true;
+        
         
     }
 
@@ -86,6 +80,6 @@ public class SandBag : MonoBehaviour
     }
     private void Stun(object sender, EventArgs e)
     { 
-        health.isStuned = true;
+        
     }
 }

@@ -35,23 +35,11 @@ public class Blade : StateMachine
     public Health _health;
     private void Awake()
     {
-        
-        _health = GetComponent<Health>();
-        bladeIdleState = new BladeIdle(this);
-        bladeAggroState = new BladeAggroState(this);
-        bladeAttackState = new BladeAttackState(this);
-        bladeStunState = new BladeStunState(this);
-
-
-
-        _health.HitStun += Hit;
+        SetUp();
+        _health.healthSystem.Hit += Hit;
         _animator = GetComponent<Animator>();
-        _health.ZeroHealth += die;
+        _health.healthSystem.Die += die;
         
-    }
-    private void die(object sender, EventArgs e)
-    {
-        Destroy(this.gameObject);
     }
 
 
@@ -59,6 +47,18 @@ public class Blade : StateMachine
     {
         return bladeIdleState;
     }
-    private void Hit(object sender, EventArgs e) {}
+    private void SetUp()
+    {
+        _health = GetComponent<Health>();
+        bladeIdleState = new BladeIdle(this);
+        bladeAggroState = new BladeAggroState(this);
+        bladeAttackState = new BladeAttackState(this);
+        bladeStunState = new BladeStunState(this);
+    }
+    private void Hit() {}
+    private void die()
+    {
+        Destroy(this.gameObject);
+    }
 }
 
