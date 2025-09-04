@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BladeStunState : BladeBaseState
 {
-    private Blade _sm;
-    private PlayerHealth _health;
+    
+    private PlayerHealth _playerhealth;
     private float recoverTime;
     public BladeStunState(Blade stateMachine) : base("BladeStunState", stateMachine) {}
     // Start is called before the first frame update
     public override void Enter()
     {
         base.Enter();
-        _health = _sm.gameObject.GetComponent<PlayerHealth>();
-        _health.isStuned = true;
+        _playerhealth = _sm.gameObject.GetComponent<PlayerHealth>();
+        _playerhealth.isStuned = true;
     }
     public override void LogicUpdate()
     {
@@ -24,13 +24,10 @@ public class BladeStunState : BladeBaseState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
     }
     public override void Exit()
     {
         base.Exit();
-        _health.isStuned = false;
-        
-
+        _playerhealth.isStuned = false;
     }
 }

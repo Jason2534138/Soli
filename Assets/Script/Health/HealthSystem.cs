@@ -4,9 +4,9 @@ using Unity.Burst.CompilerServices;
 
 public class HealthSystem 
 {
-    public event Action OnHealthChanged;
-    public event Action Die;
-    public event Action Hit;
+    public Action OnHealthChanged;
+    public  Action Die;
+    public  Action Hit;
 
     private int health;
     private int healthMax;

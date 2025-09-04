@@ -31,13 +31,13 @@ public class FlySM : StateMachine
         flyAttackState = new FlyAttackState(this);
         _playerDetection = GetComponentInChildren<PlayerDetection>();
         _animator = GetComponent<Animator>();
-        _health.ZeroHealth += die;
+        _health.healthSystem.Die += die;
     }
     protected override BaseState GetInitialState()
     {
         return flyIdleState;
     }
-    private void die(object sender, EventArgs e)
+    private void die()
     {
         Destroy(this.gameObject);
     }

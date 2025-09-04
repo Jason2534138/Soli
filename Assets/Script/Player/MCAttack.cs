@@ -36,12 +36,12 @@ public class MCAttack : MonoBehaviour
         int onRight = (playerTransform.position.x - TargetTransform.position.x) > 0f ? -1 : 1;
 
         health = collision.gameObject.GetComponentInParent<Health>();
-            health.OnHit(damage, stun, knockBack, onRight);
-        AddPower(charge);
+            //health.OnHit(damage, stun, knockBack, onRight);
+        //AddPower(charge);
         
     }
-    private void AddPower(int amount)
-    {
-        _mp.playerMPSystem.MPUp(amount);
-    }
+    //private void AddPower(int amount)
+    //{
+    //    _mp.playerMPSystem.MPUp(amount);
+    //}
 }

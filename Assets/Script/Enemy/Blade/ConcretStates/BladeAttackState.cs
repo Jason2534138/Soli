@@ -12,7 +12,7 @@ public class BladeAttackState : BladeGrounded
     {
         base.Enter();
         attackDuration = 2f;
-        _sm._animator.Play("Blade_attack1");
+        _animator.Play("Blade_attack1");
     }
     public override void LogicUpdate()
     {
@@ -26,12 +26,9 @@ public class BladeAttackState : BladeGrounded
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
     }
     public override void Exit()
     {
         base.Exit();
-
-
     }
 }
