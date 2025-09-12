@@ -1,30 +1,23 @@
 using System;
 using System.Diagnostics;
+using Unity.Burst.CompilerServices;
 
 public class HealthSystem 
 {
-    public event EventHandler OnHealthChanged;
-    public event EventHandler OnStunChanged;
-
-    public event EventHandler HealthReachZero;
-    public event EventHandler IsStuned;
-    public event EventHandler IsHit;
+    public Action OnHealthChanged;
+    public  Action Die;
+    public  Action Hit;
 
     private int health;
     private int healthMax;
-
-    private int stunHealth;
-    private int stunHealthMax;
 
     public HealthSystem(int healthMax)
     {
         this.healthMax = healthMax;
         health = healthMax;
-       
-
     }
 
-    #region Health
+    #region Health Functions
     public int GetHealth()
     {
         return health;
@@ -39,11 +32,11 @@ public class HealthSystem
         if (health <= 0) 
         { 
             health = 0;
-            HealthReachZero(this, EventArgs.Empty);
+            Die?.Invoke();
         }
 
-        if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
-        if (IsHit != null) IsHit(this, EventArgs.Empty);
+        OnHealthChanged?.Invoke();
+        Hit?.Invoke();
     }
     public void Heal(int healAmount)
     {
@@ -52,8 +45,8 @@ public class HealthSystem
         {
             health = healthMax;
         }
-        if (OnHealthChanged != null) OnHealthChanged(this, EventArgs.Empty);
+        OnHealthChanged?.Invoke();
     }
     #endregion
-    
+        
 }

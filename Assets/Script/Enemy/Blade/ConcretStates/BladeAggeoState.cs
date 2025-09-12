@@ -26,14 +26,10 @@ public class BladeAggroState : BladeGrounded
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        _sm._animator.Play("Blade_run");
-
-        
+        _animator.Play("Blade_run");
         if(attackDetection.hasAttackTarget == true)
         {
-            
             stateMachine.ChangeState(_sm.bladeAttackState);
-
         }
         if (_playerDetection.isSeeingPlayer)
         {
@@ -49,9 +45,7 @@ public class BladeAggroState : BladeGrounded
     {
         base.PhysicsUpdate();
         int dir = target.transform.position.x > _sm.gameObject.transform.position.x ? 1 : -1;
-
-        _rb.velocity = new Vector2(_sm._speed * dir, _rb.velocity.y);
-
+        _rb.velocity = new Vector2(_speed * dir, _rb.velocity.y);
     }
     public override void Exit()
     {

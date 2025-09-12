@@ -10,7 +10,7 @@ public class FootStun : FootBasseState
     public override void Enter()
     {
         base.Enter();
-        _sm._health.isStuned = true;
+        
     }
     public override void LogicUpdate()
     {
@@ -33,7 +33,7 @@ public class FootStun : FootBasseState
     public override void Exit()
     {
         base.Exit();
-        _health.isStuned = false;
+        
 
 
     }

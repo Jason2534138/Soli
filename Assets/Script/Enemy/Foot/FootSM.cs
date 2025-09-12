@@ -46,7 +46,7 @@ public class FootSM : StateMachine
         footStun = new FootStun(this);
         footBlock = new FootBlocked(this);
         _animator = GetComponent<Animator>();
-        _health.ZeroHealth += die;
+        
     }
 
     protected override BaseState GetInitialState()

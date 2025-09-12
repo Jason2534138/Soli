@@ -3,21 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeAirState : BaseState
+public class BladeAirState : BladeBaseState
 {
     
-    protected Blade _sm;
-    private PlayerHealth _health;
-    private Rigidbody2D _rb;
-    private Transform _transform;
+    
+    
     
     private bool _grounded;
 
     private int _groundLayer = 1 << 6;
-    public BladeAirState(Blade stateMachine) : base("BladeAirState", stateMachine) 
-    {
-        _sm = (Blade)stateMachine;
-    } 
+    public BladeAirState(Blade stateMachine) : base("BladeAirState", stateMachine) {} 
     // Start is called before the first frame update
     public override void Enter()
     {
@@ -37,7 +32,6 @@ public class BladeAirState : BaseState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        _grounded = _sm.Rigidbody.velocity.y < Mathf.Epsilon && _sm.Rigidbody.IsTouchingLayers(_groundLayer);  
+        _grounded = _rb.velocity.y < Mathf.Epsilon && _rb.IsTouchingLayers(_groundLayer);  
     }
-
 }

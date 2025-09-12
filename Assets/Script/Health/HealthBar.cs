@@ -15,7 +15,7 @@ public class HealthBar : MonoBehaviour
     {
         this.healthSystem = healthSystem;
         slider = transform.Find("Bar").GetComponent<Slider>();
-        healthSystem.OnHealthChanged += healthSystem_OnHealthChanged;
+        
     }
 
     private void healthSystem_OnHealthChanged(object sender, EventArgs e)

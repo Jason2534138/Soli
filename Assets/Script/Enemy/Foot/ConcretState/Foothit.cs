@@ -26,8 +26,8 @@ public class Foothit : BaseState
         stunTimer -= Time.deltaTime;
         if(stunTimer < 0f)
         {
-            if (!_health.isStuned) stateMachine.ChangeState(((FootSM)stateMachine).footAggro);
-            else stateMachine.ChangeState(((FootSM)stateMachine).footStun);
+            //if (!_health.isStuned) stateMachine.ChangeState(((FootSM)stateMachine).footAggro);
+            stateMachine.ChangeState(((FootSM)stateMachine).footStun);
         }
             
     }

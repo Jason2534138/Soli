@@ -23,9 +23,9 @@ public class FootBasseState : BaseState
         base.Enter();
         _health = _sm.gameObject.GetComponent<Health>();
         _rb = _sm.gameObject.GetComponent<Rigidbody2D>();
-        _health.ZeroStun += Stun;
-        
-        _health.HitStun += Hit;
+
+
+        _health.healthSystem.Die += die;
     }
     public override void LogicUpdate()
     {
@@ -61,8 +61,11 @@ public class FootBasseState : BaseState
     }
     private void Hit(object sender, EventArgs e)
     {
-        if(!_health.isStuned) stateMachine.ChangeState(_sm.footHit);
+        stateMachine.ChangeState(_sm.footHit);
     }
-    
+    private void die()
+    {
+
+    }
 
 }
