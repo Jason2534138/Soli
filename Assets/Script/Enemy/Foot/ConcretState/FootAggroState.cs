@@ -15,23 +15,32 @@ public class FootAggroState : FootBasseState
     public override void Enter()
     {
         base.Enter();
-        _attack = _sm.GetComponentInChildren<Attack>();
-        
-        aggroTimer = aggroTimeMax;
-        target = GameObject.FindGameObjectWithTag("Player");
+        SetUp();
+        _sm._animator.Play("Foot_moving");
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        _sm._animator.Play("Foot_moving");
-        if(_attack != null)
-        {
-            if (_attack.isBlocked)
-            {
-                stateMachine.ChangeState(_sm.footBlock);
-            }
-        }
-       
+        HandleDeaggro();
+    }
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        HandlePhysics();
+    }
+    public override void Exit()
+    {
+        base.Exit();
+    }
+    private void SetUp()
+    {
+        _attack = _sm.GetComponentInChildren<Attack>();
+
+        aggroTimer = aggroTimeMax;
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
+    private void HandleDeaggro()
+    {
         if (_sm._playerDetection.isSeeingPlayer)
         {
             aggroTimer = aggroTimeMax;
@@ -42,18 +51,15 @@ public class FootAggroState : FootBasseState
             if (aggroTimer < 0f) stateMachine.ChangeState(_sm.footIdle);
         }
     }
-    public override void PhysicsUpdate()
+    private void HandlePhysics()
     {
-        base.PhysicsUpdate();
-        int dir = target.transform.position.x > _sm.gameObject.transform.position.x ? 1 : -1;
+        
+        int dir;
+        if ((target.transform.position.x > _sm.gameObject.transform.position.x && !_isFacingRight) || (target.transform.position.x < _sm.gameObject.transform.position.x && _isFacingRight)) Flip();
+        if (_isFacingRight) dir = 1;
+        else dir = -1;
 
-        _rb.velocity = new Vector2(speed * dir, _rb.velocity.y);
-
+        _rb.velocity = new Vector2(_speed * dir, _rb.velocity.y);
 
     }
-    public override void Exit()
-    {
-        base.Exit();
-    }
-    
 }

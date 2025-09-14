@@ -23,19 +23,24 @@ public class FlySM : StateMachine
     public Health _health;
     private void Awake()
     {
-        _playerDetection = GetComponentInChildren<PlayerDetection>();
-        _health = GetComponent<Health>();
-        _rb = GetComponent<Rigidbody2D>();
-        flyIdleState = new FlyIdleState(this);
-        flyAggroState = new FlyAggroState(this);
-        flyAttackState = new FlyAttackState(this);
-        _playerDetection = GetComponentInChildren<PlayerDetection>();
-        _animator = GetComponent<Animator>();
-        _health.healthSystem.Die += die;
+        SetUp();
     }
     protected override BaseState GetInitialState()
     {
         return flyIdleState;
+    }
+    private void SetUp()
+    {
+        _playerDetection = GetComponentInChildren<PlayerDetection>();
+        _health = GetComponent<Health>();
+        _health.SetUp();
+        _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _playerDetection = GetComponentInChildren<PlayerDetection>();
+        flyIdleState = new FlyIdleState(this);
+        flyAggroState = new FlyAggroState(this);
+        flyAttackState = new FlyAttackState(this);
+        _health.healthSystem.Die += die;
     }
     private void die()
     {

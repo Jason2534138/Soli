@@ -21,40 +21,35 @@ public class FootSM : StateMachine
     public FootBlocked footBlock;
 
     public Health _health;
-    
-    
-
     public bool isFacingRight = false;
-
     public Animator _animator;
-
     public PlayerDetection _playerDetection;
-
     public Rigidbody2D rb;
 
-    public Transform[] patrolPoints;
+    
 
     public void Awake()
     {
-        _playerDetection = GetComponentInChildren<PlayerDetection>();
-        _health = GetComponent<Health>();
-        rb = GetComponent<Rigidbody2D>();
-        footIdle = new FootIdle(this);
-        footAggro = new FootAggroState(this);
-        footHit = new Foothit(this);
-        footDeath = new FootDeath(this);
-        footStun = new FootStun(this);
-        footBlock = new FootBlocked(this);
-        _animator = GetComponent<Animator>();
-        
+        Setup();
     }
 
     protected override BaseState GetInitialState()
     {
         return footIdle;
     }
-    private void die(object sender, EventArgs e)
+    private void Setup()
     {
-        Destroy(this.gameObject);
+
+        _playerDetection = GetComponentInChildren<PlayerDetection>();
+        _health = GetComponent<Health>();
+        _health.SetUp();
+        rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        footIdle = new FootIdle(this);
+        footAggro = new FootAggroState(this);
+        footHit = new Foothit(this);
+        footDeath = new FootDeath(this);
+        footStun = new FootStun(this);
+        footBlock = new FootBlocked(this);
     }
 }

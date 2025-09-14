@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BladeGrounded : BladeBaseState
 {
-    public PlayerDetection _playerDetection;
+    
     public BladeGrounded(string name, Blade stateMachine) : base(name, stateMachine){}
     public override void Enter()
     {

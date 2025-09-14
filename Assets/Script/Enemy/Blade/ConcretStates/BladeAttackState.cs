@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class BladeAttackState : BladeGrounded
+public class BladeAttackState : BladeBaseState
 {
     private float attackDuration;
     public BladeAttackState(Blade stateMachine) : base("BladeAttackState", stateMachine) { }
@@ -11,6 +11,7 @@ public class BladeAttackState : BladeGrounded
     public override void Enter()
     {
         base.Enter();
+        
         attackDuration = 2f;
         _animator.Play("Blade_attack1");
     }

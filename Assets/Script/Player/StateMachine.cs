@@ -12,10 +12,7 @@ public class StateMachine : MonoBehaviour
     {
         //預設狀態在Start環節設定，有功能在更早的階段需要存取此資料可能會有錯誤
         currentState = GetInitialState();
-        if (currentState != null)
-        {
-            currentState.Enter();
-        }
+        currentState?.Enter();
     }
     private void Update()
     {

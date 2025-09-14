@@ -8,62 +8,63 @@ public class FootBasseState : BaseState
 {
     protected FootSM _sm;
     protected Rigidbody2D _rb;
-    protected float speed = 5f;
-    
+    protected float _speed = 5f;
     protected Health _health;
+    protected PlayerDetection _playerDetection;
+    protected Animator _animator;
+    protected bool _isFacingRight;
+    protected bool _grounded;
 
-
+    private int _groundLayer = 1 << 6;
 
     public FootBasseState(string name, FootSM stateMachine) : base(name, stateMachine)
     {
         _sm = (FootSM)stateMachine;
+        _rb = _sm.rb;
+        _playerDetection = _sm._playerDetection;
+        _health = _sm._health;
+        _animator = _sm._animator;
+        _isFacingRight = _sm.isFacingRight;
+
     }
     public override void Enter()
     {
         base.Enter();
-        _health = _sm.gameObject.GetComponent<Health>();
-        _rb = _sm.gameObject.GetComponent<Rigidbody2D>();
-
-
-        _health.healthSystem.Die += die;
+        SetUp();
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        Flip();
-
-
+        GroundCheck();
     }
-
+    private void GroundCheck()
+    {
+        _grounded = Physics2D.Raycast(_sm.transform.position, Vector2.down, 3.5f, _groundLayer);
+    }
     protected void Flip()
     {
-        if (_sm.isFacingRight && _rb.velocity.x < -0.1f || !_sm.isFacingRight && _rb.velocity.x > 0.1f)
-        {
-            _sm.isFacingRight = !_sm.isFacingRight;
-            //transform.Rotate(0f, 180f, 0f);
-            Vector3 localscale = _sm.transform.localScale;
-            localscale.x *= -1f;
-            _sm.transform.localScale = localscale;
-
-        }
+        _isFacingRight = !_isFacingRight;
+        Vector3 localscale = _sm.transform.localScale;
+        if (_isFacingRight) localscale.x = -1;
+        else localscale.x = 1;
+        _sm.transform.localScale = localscale;
     }
-    /*protected void CliffWallDetect()
+    private void SetUp()
     {
-        if (Physics2D.Raycast(_sm.transform.position, , 1f, 1 << 6) == false)
-        {
-            
-        }
-    }*/
+
+        _health.healthSystem.Hit += Hit;
+        _health.healthSystem.Die += Die;
+    }
     private void Stun(object sender, EventArgs e)
     {
 
         stateMachine.ChangeState(_sm.footStun);
     }
-    private void Hit(object sender, EventArgs e)
+    protected void Hit()
     {
         stateMachine.ChangeState(_sm.footHit);
     }
-    private void die()
+    protected void Die()
     {
 
     }

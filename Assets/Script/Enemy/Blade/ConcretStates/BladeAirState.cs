@@ -5,18 +5,12 @@ using UnityEngine;
 
 public class BladeAirState : BladeBaseState
 {
-    
-    
-    
-    
-    private bool _grounded;
-
-    private int _groundLayer = 1 << 6;
     public BladeAirState(Blade stateMachine) : base("BladeAirState", stateMachine) {} 
     // Start is called before the first frame update
     public override void Enter()
     {
         base.Enter();
+        ResetSpeed();
     }
 
     public override void LogicUpdate()
@@ -25,13 +19,15 @@ public class BladeAirState : BladeBaseState
         if (_grounded)
         {
             stateMachine.ChangeState(_sm.bladeIdleState);
-
         }
 
     }
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        _grounded = _rb.velocity.y < Mathf.Epsilon && _rb.IsTouchingLayers(_groundLayer);  
+    }
+    private void ResetSpeed()
+    {
+        _rb.velocity = Vector2.zero;
     }
 }

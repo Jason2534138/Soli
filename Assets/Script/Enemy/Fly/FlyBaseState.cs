@@ -5,36 +5,33 @@ using UnityEngine;
 public class FlyBaseState : BaseState
 {
     protected FlySM _sm;
-    public PlayerDetection _playerDetection;
-    public Rigidbody2D _rb;
-    public Animator _animator;
-    public bool isFacingRight = false;
-    public Health _health;
+    protected PlayerDetection _playerDetection;
+    protected Rigidbody2D _rb;
+    protected Animator _animator;
+    protected bool _isFacingRight = false;
+    protected Health _health;
     public FlyBaseState(string name, FlySM stateMachine) : base(name, stateMachine)
     {
         _sm = (FlySM)stateMachine;
-
+        _health = _sm._health;
+        _rb = _sm._rb;
+        _playerDetection = _sm._playerDetection;
+        _animator = _sm._animator;
+        _isFacingRight = _sm.isFacingRight;
+        
     }
     public override void Enter()
     {
-        base.Enter();
-        _playerDetection = _sm.GetComponentInChildren<PlayerDetection>();
-        _health = _sm.GetComponent<Health>();
-        _rb = _sm.GetComponent<Rigidbody2D>();
-        _playerDetection = _sm.GetComponentInChildren<PlayerDetection>();
-        _animator = _sm.GetComponent<Animator>();
+        base.Enter();      
     }
 
     protected void Flip()
     {
-        if (_sm.isFacingRight && _rb.velocity.x < -0.1f || !_sm.isFacingRight && _rb.velocity.x > 0.1f)
-        {
-            _sm.isFacingRight = !_sm.isFacingRight;
-            //transform.Rotate(0f, 180f, 0f);
-            Vector3 localscale = _sm.transform.localScale;
-            localscale.x *= -1f;
-            _sm.transform.localScale = localscale;
-        }
+        _isFacingRight = !_isFacingRight;
+        Vector3 localscale = _sm.transform.localScale;
+        localscale.x *= -1;
+        
+        _sm.transform.localScale = localscale;
     }
     protected void FlyUp()
     {
