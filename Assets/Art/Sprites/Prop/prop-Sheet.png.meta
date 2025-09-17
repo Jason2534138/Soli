@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9c8a7daa2008cda418b6b5ac47cd90c2
+guid: 3375e61da0c32c144b0e9eba84daea40
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,22 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: yei animation-Idle_0
+      name: prop-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 273
-        height: 129
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 64
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f93e794a1f4677d4abf611db5cd571ac
-      internalID: -880105595
+      spriteID: df33d68aced09d349a34db308acafa30
+      internalID: -1059135856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: prop-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 32
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58094ff7b56de064c8b9d37f2e857822
+      internalID: 1815773092
       vertices: []
       indices: 
       edges: []
@@ -141,7 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      yei animation-Idle_0: -880105595
+      prop-Sheet_0: -1059135856
+      prop-Sheet_1: 1815773092
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
