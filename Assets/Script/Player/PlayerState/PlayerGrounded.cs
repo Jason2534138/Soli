@@ -9,12 +9,14 @@ public class PlayerGrounded : BaseState
     protected float _horizontalInput;
     protected Detector _detector;
     protected PlayerMovementSM _sm;
+    private float _jumpForce;
 
     public PlayerGrounded(string name, PlayerMovementSM stateMachine) : base(name, stateMachine){ }
     public override void Enter()
     {
         base.Enter();
         _detector  = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
+        _jumpForce = ((PlayerMovementSM)stateMachine)._jumpForce;
     }
     public override void LogicUpdate()
     {
@@ -48,7 +50,7 @@ public class PlayerGrounded : BaseState
             base.PhysicsUpdate();
             Vector2 vel;
             vel = ((PlayerMovementSM)stateMachine).rb.velocity;
-            vel.y = 40f;
+            vel.y = _jumpForce;
             ((PlayerMovementSM)stateMachine).rb.velocity = vel;
             stateMachine.ChangeState(((PlayerMovementSM)stateMachine).airState);
         }

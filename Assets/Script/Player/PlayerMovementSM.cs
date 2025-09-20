@@ -30,6 +30,7 @@ public class PlayerMovementSM : StateMachine
     public PlayerHealth _playerHealth;
     public float speed = 4f;
     public MP _mp;
+    public float _jumpForce;
     
 
     private void Awake()
