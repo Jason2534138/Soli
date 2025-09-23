@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class WallPlatfrom : MonoBehaviour
+public class WallPlatfrom : MonoBehaviour, IControllableProp
 {
     [SerializeField] private Transform[] _path;
     [SerializeField] private Transform[] _detect;
@@ -23,13 +23,7 @@ public class WallPlatfrom : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) ChangePath();
-        //foreach (Transform t in _detect)
-        //{
-        //    Collider2D hit = Physics2D.OverlapCircle(t.position, 0.01f, _layerMask);
-        //    if (hit == null) _isBlocked = false;
-        //    else _isBlocked = true;
-        //}
+       
         if (Vector2.Distance(this.transform.position, _path[current].position) > 0.1f && !Physics2D.OverlapCircle(_detect[_detectCurrent].position, 0.1f, _layerMask))
         {
             Vector3 dir;
@@ -48,5 +42,10 @@ public class WallPlatfrom : MonoBehaviour
         if (current >= _path.Length) current = 0;
         _detectCurrent = current + 1;
         if (_detectCurrent >= _detect.Length) _detectCurrent = 0;
+    }
+
+    public void Switch()
+    {
+        ChangePath();
     }
 }

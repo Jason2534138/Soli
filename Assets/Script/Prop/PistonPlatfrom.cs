@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistonPlatfrom : MonoBehaviour
+public class PistonPlatfrom : MonoBehaviour, IControllableProp
 {
     [SerializeField] private Transform[] _path;
     private int current = 0;
@@ -23,13 +23,7 @@ public class PistonPlatfrom : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T)) ChangePath();
-        //foreach (Transform t in _detect)
-        //{
-        //    Collider2D hit = Physics2D.OverlapCircle(t.position, 0.1f, _layerMask);
-        //    if (hit == null) _isBlocked = false;
-        //    else _isBlocked = true;
-        //}
+        
         if (Vector2.Distance(this.transform.position, _path[current].position) > 0.1f && !Physics2D.OverlapBox(_detect[_detectCurrent].position, boxSize, 0, _layerMask)) 
         {
             Vector3 dir;
@@ -55,5 +49,10 @@ public class PistonPlatfrom : MonoBehaviour
         {
             Gizmos.DrawWireCube(t.position, boxSize);
         }
+    }
+
+    public void Switch()
+    {
+        ChangePath();
     }
 }
