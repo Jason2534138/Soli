@@ -29,7 +29,7 @@ public class WallPlatfrom : MonoBehaviour, IControllableProp
             Vector3 dir;
             dir = (_path[current].position - transform.position).normalized;
             //_rb.MovePosition(_rb.position + (Vector2)(dir * _speed * Time.deltaTime));
-            _rb.velocity = dir * _speed * Time.deltaTime * 60;
+            _rb.velocity = dir * _speed;
             
 
         }

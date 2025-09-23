@@ -7,11 +7,32 @@ public class Generator : MonoBehaviour, IControllableProp
 {
     [SerializeField] private GameObject[] _controllableObject;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private bool _playerInRange = false;
+
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.Mouse1))
+        // 只有玩家在範圍內時，才檢查輸入
+        if (_playerInRange && Input.GetKeyDown(KeyCode.Mouse1))
         {
             Toggle();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _playerInRange = true;
+            Debug.Log("Player entered Generator range.");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _playerInRange = false;
+            Debug.Log("Player exited Generator range.");
         }
     }
 
@@ -28,7 +49,7 @@ public class Generator : MonoBehaviour, IControllableProp
         }
     }
 
-    public void Switch() 
+    public void Switch()
     {
         Toggle();
     }
