@@ -9,7 +9,8 @@ public class FlyAggroState : FlyBaseState
 
     private float aggroTimeMax = 5f;
     private float aggroTimer;
-
+    private float attackCD = 5f;
+    private float attackCDTimer;
     private GameObject _target;
     
     private float _speed = 10f;
@@ -17,13 +18,16 @@ public class FlyAggroState : FlyBaseState
     public override void Enter()
     {
         base.Enter();
+        attackCDTimer = attackCD;
         _sm._animator.Play("Fly_idle");
         aggroTimer = aggroTimeMax;
         _target = GameObject.FindGameObjectWithTag("Player");
     }
     public override void LogicUpdate()
     {
+        Debug.Log(Vector2.Distance(this._rb.position, (Vector2)_target.transform.position + _offset));
         base.LogicUpdate();
+        if(attackCDTimer > 0f)attackCDTimer -= Time.deltaTime;
         if (_sm._playerDetection.isSeeingPlayer)
         {
             aggroTimer = aggroTimeMax;
@@ -33,8 +37,9 @@ public class FlyAggroState : FlyBaseState
             aggroTimer -= Time.deltaTime;
             if (aggroTimer < 0f) stateMachine.ChangeState(_sm.flyIdleState);
         }        
-        if ((Mathf.Abs(_sm.transform.position.x - _target.transform.position.x) < 15.5f && Mathf.Abs(_sm.transform.position.x - _target.transform.position.x) > 14.5f) && _target.transform.position.y < _sm.transform.position.y)
+        if (Vector2.Distance(this._rb.position + _offset, _target.transform.position) < 1f && attackCDTimer <= 0.1f)
         {
+            
             stateMachine.ChangeState(_sm.flyAttackState);
         }
     }
@@ -49,10 +54,10 @@ public class FlyAggroState : FlyBaseState
     }
     private void HandlePhysics()
     {
-        int dir;
-        if ((Mathf.Abs(_sm.transform.position.x - _target.transform.position.x) > 15.5f && !_isFacingRight) || (Mathf.Abs(_sm.transform.position.x - _target.transform.position.x) < 14.5f && _isFacingRight)) Flip();
-        if (_isFacingRight) dir = 1;
-        else dir = -1;
-        _rb.velocity = new Vector2(_speed * dir, _rb.velocity.y);
+        Vector2 dir;
+        if ((_isFacingRight && this._rb.position.x < _target.transform.position.x) || (!_isFacingRight && this._rb.position.x < _target.transform.position.x)) Flip();
+        dir = ((Vector2)_target.transform.position + _offset - this._rb.position).normalized;
+        if(Vector2.Distance(this._rb.position, (Vector2)_target.transform.position + _offset) > 2f) _rb.velocity = _speed * dir;
+        else _rb.velocity = Vector2.zero;
     }
 }

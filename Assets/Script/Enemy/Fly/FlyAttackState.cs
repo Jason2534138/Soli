@@ -9,7 +9,7 @@ public class FlyAttackState : FlyBaseState
 
     private GameObject _target;
     private int _dir;
-    private Vector2 _attackDir;
+    private Vector2 _UattackDir;
     private Vector2 _startAngle;
     private Vector2 _endAngle;
     
@@ -22,7 +22,6 @@ public class FlyAttackState : FlyBaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("attack");
         _hitBox = _sm.transform.Find("HitBox").gameObject;
         _hitBox.SetActive(true);
         _t = 0f;
@@ -30,17 +29,14 @@ public class FlyAttackState : FlyBaseState
         _startUp = 0.5f;
         _target = GameObject.FindGameObjectWithTag("Player");
         _dir = _target.transform.position.x - _sm.transform.position.x > 0f ? 1 : -1;
-        _startAngle = new Vector2(_target.transform.position.x - _sm.transform.position.x, 2 * (_target.transform.position.y - _sm.transform.position.y));
+        _startAngle = new Vector2(_attackDir.x, _attackDir.y);
         _endAngle = new Vector2(_startAngle.x, -(_startAngle.y));
-        
-        _speed = Mathf.Abs((_sm.transform.position.x) - (_target.transform.position.x)) * 6.283f / 4 * 2;
+        _speed = 500f;
 
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        Flip(); 
-        
         _startUp -= Time.deltaTime;
         _attackTIme -= Time.deltaTime;
         if ((Physics2D.Raycast(_sm.transform.position, Vector2.down, 10f, 1 << 6) == false && _sm._rb.velocity.y > -0.1f) || Physics2D.Raycast(_sm.transform.position, Vector2.up, 3f, 1 << 6) == true  || _attackTIme < 0f && _startUp < 0f) stateMachine.ChangeState(_sm.flyAggroState);
@@ -52,7 +48,7 @@ public class FlyAttackState : FlyBaseState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        _rb.velocity = _attackDir.normalized * _speed;
+        _rb.velocity = _UattackDir.normalized * _speed;
     }
     public override void Exit()
     {

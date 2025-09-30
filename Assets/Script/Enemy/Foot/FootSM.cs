@@ -42,7 +42,7 @@ public class FootSM : StateMachine
 
         _playerDetection = GetComponentInChildren<PlayerDetection>();
         _health = GetComponent<Health>();
-        _health.SetUp();
+        _health.SetUp(100);
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         footIdle = new FootIdle(this);

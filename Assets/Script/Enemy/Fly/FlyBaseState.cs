@@ -10,6 +10,10 @@ public class FlyBaseState : BaseState
     protected Animator _animator;
     protected bool _isFacingRight = false;
     protected Health _health;
+    protected Transform[] _patrolPoints;
+    protected int _currentPatrolPoint;
+    protected Vector2 _offset;
+    protected Vector2 _attackDir;
     public FlyBaseState(string name, FlySM stateMachine) : base(name, stateMachine)
     {
         _sm = (FlySM)stateMachine;
@@ -18,11 +22,22 @@ public class FlyBaseState : BaseState
         _playerDetection = _sm._playerDetection;
         _animator = _sm._animator;
         _isFacingRight = _sm.isFacingRight;
-        
+        _patrolPoints = _sm.patrolPoints;
+        _currentPatrolPoint = _sm.currentPatrolPoint;
+        _offset = _sm._offset;
+
     }
     public override void Enter()
     {
-        base.Enter();      
+        base.Enter();
+    }
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+        if ((_rb.velocity.x > 0.1f && !_isFacingRight) || (_rb.velocity.x < 0.1f && _isFacingRight))
+        {
+            Flip();
+        }
     }
 
     protected void Flip()

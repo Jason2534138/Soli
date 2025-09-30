@@ -9,9 +9,9 @@ public class Health : MonoBehaviour
 {
     [SerializeField] int HP;
     public HealthSystem healthSystem;
-    public void SetUp()
+    public void SetUp(int Health)
     {
-        healthSystem = new HealthSystem(100);
+        healthSystem = new HealthSystem(Health);
     }
 }
    

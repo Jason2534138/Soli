@@ -44,7 +44,7 @@ public class Blade : StateMachine
     {
         _health = GetComponent<Health>();
         _rb = GetComponent<Rigidbody2D>();
-        _health.SetUp();
+        _health.SetUp(100);
         _animator = GetComponent<Animator>();
         _playerDetection = GetComponentInChildren<PlayerDetection>();
         //狀態在這裡設置，沒特別原因，主要想統一，敵人新狀態完成後記得在這裡加上去

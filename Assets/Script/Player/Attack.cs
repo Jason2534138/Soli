@@ -8,10 +8,11 @@ public class Attack : MonoBehaviour
 {
     
 
-    private PlayerMovementSM health;
+    private Health health;
     [SerializeField] private int damage;
     [SerializeField] private int stun;
     [SerializeField] private Vector2 knockBack;
+    
     
     public bool isBlocked;
     
@@ -24,11 +25,8 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        
-
-        health = collision.gameObject.GetComponentInParent<PlayerMovementSM>();
-            health.OnHit(damage, stun, knockBack, 0);
+        IDamageable _idamageable = collision.GetComponentInParent<IDamageable>();
+        _idamageable.OnHit(damage);
         
     }
 }

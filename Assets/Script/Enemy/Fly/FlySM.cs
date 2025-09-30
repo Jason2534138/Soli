@@ -13,7 +13,11 @@ public class FlySM : StateMachine
     public FlyAggroState flyAggroState;
 
 
+    [SerializeField] public Vector2 _offset;
+    [SerializeField] public Vector2 attackDir;
+
     public Transform[] patrolPoints;
+    public int currentPatrolPoint = 0;
 
 
     public PlayerDetection _playerDetection;
@@ -33,7 +37,7 @@ public class FlySM : StateMachine
     {
         _playerDetection = GetComponentInChildren<PlayerDetection>();
         _health = GetComponent<Health>();
-        _health.SetUp();
+        _health.SetUp(100);
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _playerDetection = GetComponentInChildren<PlayerDetection>();

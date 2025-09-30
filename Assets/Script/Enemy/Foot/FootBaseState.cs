@@ -39,7 +39,11 @@ public class FootBasseState : BaseState
     }
     private void GroundCheck()
     {
-        _grounded = Physics2D.Raycast(_sm.transform.position, Vector2.down, 3.5f, _groundLayer);
+        float timer = 0f;
+        if (Physics2D.Raycast(_sm.transform.position, Vector2.down, 3.5f, _groundLayer)) timer += Time.deltaTime;
+        else timer = 0f;
+        if (timer > 0.5f) _grounded = false;
+        else _grounded = true;
     }
     protected void Flip()
     {

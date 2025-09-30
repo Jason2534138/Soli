@@ -6,25 +6,24 @@ public class PistonPlatfrom : MonoBehaviour, IControllableProp
 {
     [SerializeField] private Transform[] _path;
     private int current = 0;
-    private Vector2 _refSpeed = Vector2.zero;
-    private float _isColliding;
     private Rigidbody2D _rb;
     [SerializeField] private float _speed;
-    [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private Transform[] _detect;
-    private int _detectCurrent = 0;
-    [SerializeField] public Vector2 boxSize;
-    //private bool _isBlocked;
+    
+    [SerializeField] private BoxCollider2D[] _detect;
+    private bool _isBlocked;
+    private int _blockingObject = 0;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         this.transform.position = _path[0].position;
+        _detect[current].enabled = true;
     }
     private void Update()
     {
-        
-        if (Vector2.Distance(this.transform.position, _path[current].position) > 0.1f && !Physics2D.OverlapBox(_detect[_detectCurrent].position, boxSize, 0, _layerMask)) 
+       
+        _isBlocked = _blockingObject > 0? true: false;
+        if (Vector2.Distance(this.transform.position, _path[current].position) > 0.1f && !_isBlocked) 
         {
             Vector3 dir;
             dir = (_path[current].position - transform.position).normalized;
@@ -35,21 +34,23 @@ public class PistonPlatfrom : MonoBehaviour, IControllableProp
         else _rb.velocity = Vector2.zero;
         
     }
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6) _blockingObject += 1;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6) _blockingObject -= 1;
+    }
     private void ChangePath()
     {
+        _detect[current].enabled = false;
         current += 1;
         if (current >= _path.Length) current = 0;
-        _detectCurrent = current + 1;
-        if (_detectCurrent >= _detect.Length) _detectCurrent = 0;
+        _detect[current].enabled = true;
+        
     }
-    private void OnDrawGizmos()
-    {
-        foreach (Transform t in _detect)
-        {
-            Gizmos.DrawWireCube(t.position, boxSize);
-        }
-    }
+    
 
     public void Switch()
     {

@@ -59,7 +59,7 @@ public class BladeIdle : BladeBaseState
         else dir = -1;
         //當到走不了的地方時轉向(牆壁)
         //因為此處指定地板圖層的方法是指出其所在的層數的位置(如第六個圖層)，所以要是有改變圖層順序可能會出錯會需要修改
-        if(Physics2D.Raycast(_sm.transform.position, new Vector2(dir, -1), 4f, 1 << 6) != true || Physics2D.Raycast(_sm.transform.position, new Vector2(dir, 0), 4f, 1 << 6) == true)
+        if(Physics2D.Raycast(_sm.transform.position, new Vector2(dir, -1), 5f, 1 << 6) != true || Physics2D.Raycast(_sm.transform.position, new Vector2(dir, 0), 4f, 1 << 6) == true)
         {
             
             Vector2 vel = _rb.velocity;

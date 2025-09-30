@@ -3,7 +3,7 @@ using System.Collections.Generic;
 //using TMPro.EditorUtilities;
 using UnityEngine;
 
-public class PlayerMovementSM : StateMachine
+public class PlayerMovementSM : StateMachine, IDamageable
 {
     [HideInInspector]
     public PlayerIdle idleState;
@@ -27,7 +27,7 @@ public class PlayerMovementSM : StateMachine
     public Animator animator;
     public Rigidbody2D rb;
       
-    public PlayerHealth _playerHealth;
+    public Health _playerHealth;
     public float speed = 4f;
     public MP _mp;
     public float _jumpForce;
@@ -44,39 +44,27 @@ public class PlayerMovementSM : StateMachine
         spearBlockState = new PlayerSpearBlock(this);
         hurtState = new PlayerHurtkState(this);
         _mp = GetComponent<MP>();
-        _playerHealth = GetComponent<PlayerHealth>();
+        _playerHealth = GetComponent<Health>();
+        _playerHealth.SetUp(100);
         
            
-    }
-
-
-    public void OnHit(int Damage, int Stun, Vector2 knockBack, int onRight)
-    {
-        if (spearBlockState.isBlocking)
-        {
-            //ChangeState(this.spearBlockState);
-            Debug.Log("blocked");
-            
-            _mp.playerMPSystem.MPUp(20);
-            this.ChangeState(this.idleState);
-        }
-        else
-        {
-            ChangeState(hurtState);
-            Vector2 posKnockBack;
-            posKnockBack = new Vector2(knockBack.x * onRight, knockBack.y);
-
-            _playerHealth.healthSystem.Damage(Damage);
-            
-            rb.velocity += posKnockBack;
-        }
-
-        
-
     }
     protected override BaseState GetInitialState()
     {
         return idleState;
     }
-    
+
+    public void OnHit(int damage)
+    {
+        //if (spearBlockState.isBlocking)
+        //{
+        //    //ChangeState(this.spearBlockState);
+        //    Debug.Log("blocked");
+
+        //    _mp.playerMPSystem.MPUp(20);
+        //    this.ChangeState(this.idleState);
+        //}
+        ChangeState(hurtState);
+        _playerHealth.healthSystem.Damage(damage);
+    }
 }
