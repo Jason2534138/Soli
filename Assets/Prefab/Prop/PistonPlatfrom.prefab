@@ -224,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 2386126214283081364}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.82, z: 0}
+  m_LocalPosition: {x: 0, y: 3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -301,13 +301,9 @@ MonoBehaviour:
   - {fileID: 661965700420047520}
   - {fileID: 2609785408820825910}
   _speed: 3
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 64
   _detect:
-  - {fileID: 6548718631077390307}
   - {fileID: 178398689036954716}
-  boxSize: {x: 7.93, y: -0.02}
+  - {fileID: 6548718631077390307}
 --- !u!61 &7166191237549034331
 BoxCollider2D:
   m_ObjectHideFlags: 0
