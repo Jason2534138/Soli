@@ -22,12 +22,16 @@ public class FlyAggroState : FlyBaseState
         _sm._animator.Play("Fly_idle");
         aggroTimer = aggroTimeMax;
         _target = GameObject.FindGameObjectWithTag("Player");
+        
+        
+        
     }
     public override void LogicUpdate()
     {
-        Debug.Log(Vector2.Distance(this._rb.position, (Vector2)_target.transform.position + _offset));
+        
         base.LogicUpdate();
-        if(attackCDTimer > 0f)attackCDTimer -= Time.deltaTime;
+        if ((_sm.isFacingRight && _sm.transform.position.x > _target.transform.position.x) || (!_sm.isFacingRight && _sm.transform.position.x < _target.transform.position.x)) Flip();
+        
         if (_sm._playerDetection.isSeeingPlayer)
         {
             aggroTimer = aggroTimeMax;
@@ -37,9 +41,8 @@ public class FlyAggroState : FlyBaseState
             aggroTimer -= Time.deltaTime;
             if (aggroTimer < 0f) stateMachine.ChangeState(_sm.flyIdleState);
         }        
-        if (Vector2.Distance(this._rb.position + _offset, _target.transform.position) < 1f && attackCDTimer <= 0.1f)
+        if (attackCDTimer <= 0.1f)
         {
-            
             stateMachine.ChangeState(_sm.flyAttackState);
         }
     }
@@ -55,9 +58,32 @@ public class FlyAggroState : FlyBaseState
     private void HandlePhysics()
     {
         Vector2 dir;
-        if ((_isFacingRight && this._rb.position.x < _target.transform.position.x) || (!_isFacingRight && this._rb.position.x < _target.transform.position.x)) Flip();
-        dir = ((Vector2)_target.transform.position + _offset - this._rb.position).normalized;
-        if(Vector2.Distance(this._rb.position, (Vector2)_target.transform.position + _offset) > 2f) _rb.velocity = _speed * dir;
-        else _rb.velocity = Vector2.zero;
+        Vector2 targetPosOffset;
+        
+        
+        if (_sm.transform.position.x > _target.transform.position.x)
+        {
+            dir = ((Vector2)_target.transform.position + _offset - this._rb.position + new Vector2(Random.Range(2f, -2f), Random.Range(2f, -2f))).normalized;
+            if (Vector2.Distance(this._rb.position, (Vector2)_target.transform.position + _offset) > 3f) _rb.velocity = _speed * dir;
+            else
+            {
+                if (attackCDTimer > 0f) attackCDTimer -= Time.deltaTime;
+                //_rb.velocity = Vector2.zero;
+            }
+                
+        }
+        else
+        {
+            targetPosOffset = _offset;
+            targetPosOffset.x *= -1;
+            dir = ((Vector2)_target.transform.position + targetPosOffset - this._rb.position + new Vector2(Random.Range(2f, -2f), Random.Range(2f, -2f))).normalized;
+            if (Vector2.Distance(this._rb.position, (Vector2)_target.transform.position + targetPosOffset) > 3f) _rb.velocity = _speed * dir;
+            else
+            {
+                if (attackCDTimer > 0f) attackCDTimer -= Time.deltaTime;
+                //_rb.velocity = Vector2.zero;
+            }
+        }
+        
     }
 }
