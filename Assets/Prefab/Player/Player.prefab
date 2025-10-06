@@ -190,9 +190,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929807628762069024}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -173.11, y: 96.54, z: -0.45926285}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.92674476, y: 0.92674476, z: 0.92674476}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6485759490105887458}
@@ -243,7 +243,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1265436939
-  m_SortingLayer: 1
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -880105595, guid: 9c8a7daa2008cda418b6b5ac47cd90c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -272,7 +272,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 82a1ebd2963afba4cb90384ca2453cab, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -336,6 +336,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 0}
   speed: 20
   _mp: {fileID: 0}
+  _jumpForce: 20
 --- !u!114 &4522336363518702367
 MonoBehaviour:
   m_ObjectHideFlags: 0

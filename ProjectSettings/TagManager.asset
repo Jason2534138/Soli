@@ -44,17 +44,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 1265436939
-    locked: 0
   - name: Rat
     uniqueID: 945586721
+    locked: 0
+  - name: Background05
+    uniqueID: 4120574577
+    locked: 0
+  - name: Background04
+    uniqueID: 691117037
+    locked: 0
+  - name: Background03
+    uniqueID: 3686155915
+    locked: 0
+  - name: Background02
+    uniqueID: 954455227
+    locked: 0
+  - name: Background01
+    uniqueID: 3712705353
     locked: 0
   - name: Enemy
     uniqueID: 2941800589
     locked: 0
-  - name: BackgroundFront
-    uniqueID: 3712705353
+  - name: Player
+    uniqueID: 1265436939
     locked: 0
   - name: Ui
     uniqueID: 1569949755
