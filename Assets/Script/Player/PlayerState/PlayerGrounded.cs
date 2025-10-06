@@ -31,7 +31,7 @@ public class PlayerGrounded : BaseState
             }
             
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (_detector.IsGrounded())
             {
@@ -39,7 +39,14 @@ public class PlayerGrounded : BaseState
             }
 
         }
+        if (Input.GetButtonDown("Dash"))
+        {
+            if (true)
+            {
+                stateMachine.ChangeState(((PlayerMovementSM)stateMachine).dashing);
+            }
 
+        }
         if (!_detector.IsGrounded()) stateMachine.ChangeState(((PlayerMovementSM)stateMachine).airState);
 
     }

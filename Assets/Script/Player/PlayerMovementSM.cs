@@ -21,6 +21,12 @@ public class PlayerMovementSM : StateMachine, IDamageable
     public PlayerSpearBlock spearBlockState;
     [HideInInspector]
     public PlayerHurtkState hurtState;
+    [HideInInspector]
+    public PlayerBlockAttackState blockAttackState;
+    [HideInInspector]
+    public PlayerDashing dashing;
+    [HideInInspector]
+    public PlayerDashAttack dashAttack;
 
     public bool isFacingRight = true;
 
@@ -37,12 +43,15 @@ public class PlayerMovementSM : StateMachine, IDamageable
     {
         //rb = GetComponent<Rigidbody2D>();
         idleState = new PlayerIdle(this);
+        blockAttackState = new PlayerBlockAttackState(this);
         movingState = new PlayerMoving(this);
         groundComboState = new PlayerGroundCombo(this);
         airState = new PlayerAirState(this);
+        dashAttack = new PlayerDashAttack(this);
         airComboState = new PlayerAirCombo(this);
         spearBlockState = new PlayerSpearBlock(this);
         hurtState = new PlayerHurtkState(this);
+        dashing = new PlayerDashing(this);
         _mp = GetComponent<MP>();
         _playerHealth = GetComponent<Health>();
         _playerHealth.SetUp(100);

@@ -33,7 +33,7 @@ public class FlyIdleState : FlyBaseState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log(_sm.isFacingRight);
+        
     }
     private void ChangeDirection()
     {

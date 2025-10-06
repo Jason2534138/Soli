@@ -24,7 +24,7 @@ public class FootBasseState : BaseState
         _playerDetection = _sm._playerDetection;
         _health = _sm._health;
         _animator = _sm._animator;
-        _isFacingRight = _sm.isFacingRight;
+        
 
     }
     public override void Enter()

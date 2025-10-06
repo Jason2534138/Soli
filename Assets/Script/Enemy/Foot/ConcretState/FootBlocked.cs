@@ -6,15 +6,16 @@ using UnityEngine;
 public class FootBlocked : BaseState
 {
     private Attack _attack;
+    
     public FootBlocked(FootSM stateMachine) : base("FootBlocked", stateMachine) { }
     private float stunTime;
     public override void Enter()
     {
         base.Enter();
         _attack = ((FootSM)stateMachine).GetComponentInChildren<Attack>();
-        _attack.isBlocked = false;
+        //_attack.isBlocked = false;
         stunTime = 0;
-        ((FootSM)stateMachine).rb.velocity = new Vector2(((FootSM)stateMachine).isFacingRight?  -10 : 10, 10);
+        ((FootSM)stateMachine).rb.velocity = new Vector2(((FootSM)stateMachine).transform.localScale.x < 0?  -8 : 8, 15);
         
         
     }

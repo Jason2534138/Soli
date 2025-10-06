@@ -11,7 +11,7 @@ public class PlayerHurtkState : BaseState
     public override void Enter()
     {
         base.Enter();
-        ((PlayerMovementSM)stateMachine).rb.velocity = new Vector2(((PlayerMovementSM)stateMachine).isFacingRight? -10 : 10, 10);
+        ((PlayerMovementSM)stateMachine).rb.velocity = new Vector2(((PlayerMovementSM)stateMachine).isFacingRight? -10 : 10, 20);
         stunTime = 0f;
     }
     public override void LogicUpdate()

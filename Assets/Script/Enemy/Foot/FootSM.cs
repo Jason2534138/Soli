@@ -2,10 +2,11 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public class FootSM : StateMachine
+public class FootSM : StateMachine, IDamageable, IBlockable
 {
     [HideInInspector]
     public FootIdle footIdle;
@@ -31,6 +32,21 @@ public class FootSM : StateMachine
     public void Awake()
     {
         Setup();
+    }
+
+    public void OnGotBlock()
+    {
+        
+        Debug.Log("blocked");
+        ChangeState(footBlock);
+        
+    }
+
+    public void OnHit(int damage)
+    {
+        
+        _health.healthSystem.Damage(damage);
+        ChangeState(footHit);
     }
 
     protected override BaseState GetInitialState()

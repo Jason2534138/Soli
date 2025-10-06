@@ -12,21 +12,34 @@ public class Attack : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private int stun;
     [SerializeField] private Vector2 knockBack;
+    public bool canBlock;
+    public bool canAttack;
     
-    
-    public bool isBlocked;
+    //public bool isBlocked;
     
 
     private Transform playerTransform;
     private void Awake()
     {
-        isBlocked = false;
+        //isBlocked = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable _idamageable = collision.GetComponentInParent<IDamageable>();
-        _idamageable.OnHit(damage);
+        if (canAttack)
+        {
+            Debug.Log("hit");
+            IDamageable _idamageable = collision.GetComponentInParent<IDamageable>();
+            _idamageable?.OnHit(damage);
+        }
+        else if (canBlock)
+        {
+            Debug.Log("Block");
+            IBlockable _blockable = collision.GetComponentInParent<IBlockable>();
+            _blockable?.OnGotBlock();
+        }
+        
+        
         
     }
 }

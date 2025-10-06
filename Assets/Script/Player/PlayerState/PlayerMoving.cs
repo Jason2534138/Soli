@@ -15,12 +15,12 @@ public class PlayerMoving : PlayerGrounded
     public override void Enter()
     {
         base.Enter();
-       
+        
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        
+        _sm.animator.Play("Player_run 0");
         _horizontalInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(_horizontalInput) < Mathf.Epsilon)
         {

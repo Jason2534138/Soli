@@ -29,6 +29,8 @@ public class PlayerSpearBlock : BaseState
         base.LogicUpdate();
         blockingTime += Time.deltaTime;
         if (blockingTime > 0.5f) stateMachine.ChangeState(_sm.idleState);
+        else if (Input.GetMouseButtonDown(0))_sm.ChangeState(_sm.blockAttackState);
+
        
     }
     public override void PhysicsUpdate()
