@@ -12,12 +12,16 @@ public class FlyIdleState : FlyBaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log(_patrolPoints.Length);
+        
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if(_sm._playerDetection.isSeeingPlayer) stateMachine.ChangeState(_sm.flyAggroState);
+        if ((_rb.velocity.x > 0.1f && !_sm.isFacingRight) || (_rb.velocity.x < 0.1f && _sm.isFacingRight))
+        {
+            Flip();
+        }
+        if (_sm._playerDetection.isSeeingPlayer) stateMachine.ChangeState(_sm.flyAggroState);
         if(Vector2.Distance(_sm.transform.position, _patrolPoints[_currentPatrolPoint].transform.position) < 0.1f) ChangeDirection();
         HandleMovingLogic();
     }
@@ -29,6 +33,7 @@ public class FlyIdleState : FlyBaseState
     public override void Exit()
     {
         base.Exit();
+        Debug.Log(_sm.isFacingRight);
     }
     private void ChangeDirection()
     {

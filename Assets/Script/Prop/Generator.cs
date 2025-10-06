@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -9,7 +10,7 @@ public class Generator : MonoBehaviour, IControllableProp
 
     private bool _playerInRange = false;
 
-    private void Update()
+    private void LateUpdate()
     {
         // 只有玩家在範圍內時，才檢查輸入
         if (_playerInRange && Input.GetKeyDown(KeyCode.Mouse1))

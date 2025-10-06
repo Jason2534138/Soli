@@ -16,33 +16,35 @@ public class FlyAttackState : FlyBaseState
     private float _speed;
     private float _t;
     private float _attackTIme;
-    private float _startUp;
+    
     private GameObject _hitBox;
 
     public override void Enter()
     {
         base.Enter();
+        _animator.Play("Fly_attack");
         _hitBox = _sm.transform.Find("HitBox").gameObject;
-        _hitBox.SetActive(true);
+        //_hitBox.SetActive(true);
         _t = 0f;
         _attackTIme = 1.5f;
-        _startUp = 0.5f;
+        _UattackDir = _sm.attackDir;
         _target = GameObject.FindGameObjectWithTag("Player");
         _dir = _target.transform.position.x - _sm.transform.position.x > 0f ? 1 : -1;
-        _startAngle = new Vector2(_attackDir.x, _attackDir.y);
+        _startAngle = new Vector2(_UattackDir.x, _UattackDir.y);
         _endAngle = new Vector2(_startAngle.x, -(_startAngle.y));
-        _speed = 500f;
+        _speed = 25f;
 
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        _startUp -= Time.deltaTime;
-        _attackTIme -= Time.deltaTime;
-        if ((Physics2D.Raycast(_sm.transform.position, Vector2.down, 10f, 1 << 6) == false && _sm._rb.velocity.y > -0.1f) || Physics2D.Raycast(_sm.transform.position, Vector2.up, 3f, 1 << 6) == true  || _attackTIme < 0f && _startUp < 0f) stateMachine.ChangeState(_sm.flyAggroState);
-        if(_t < 1f) _t += Time.deltaTime / (-(_startAngle.y) / 30);
         
-        _attackDir = new Vector2(Mathf.Lerp(_startAngle.x, _endAngle.x, _t), Mathf.Lerp(_startAngle.y, _endAngle.y, _t));
+        _attackTIme -= Time.deltaTime;
+        if (_attackTIme <= 0f) stateMachine.ChangeState(_sm.flyAggroState);
+        //if ((Physics2D.Raycast(_sm.transform.position, Vector2.down, 10f, 1 << 6) == false && _sm._rb.velocity.y > -0.1f) || Physics2D.Raycast(_sm.transform.position, Vector2.up, 3f, 1 << 6) == true  || _attackTIme < 0f && _startUp < 0f) stateMachine.ChangeState(_sm.flyAggroState);
+        if (_t < 1f) _t += Time.deltaTime / 1.25f;
+        
+        _UattackDir = new Vector2(Mathf.Lerp(_startAngle.x * _dir, _endAngle.x * _dir, _t), Mathf.Lerp(_startAngle.y, _endAngle.y, _t));
         
     }
     public override void PhysicsUpdate()

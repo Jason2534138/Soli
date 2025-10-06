@@ -20,8 +20,8 @@ public class PistonPlatfrom2 : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(_blockingObject);
-        _isBlocked = _blockingObject > 0 ? true : false;
+
+        _isBlocked = _blockingObject <= 0 ? false : true;
         if (!_isBlocked)
         {
             if (Vector2.Distance(this.transform.position, _path[current].position) > 0.5f)
@@ -48,13 +48,18 @@ public class PistonPlatfrom2 : MonoBehaviour
         current += 1;
         if (current >= _path.Length) current = 0;
         _detect[current].enabled = true;
+        _blockingObject = 0;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        _isBlocked = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6) _blockingObject += 1;
+        if (collision.gameObject.layer == 6 && collision.gameObject.transform != this.gameObject.transform.parent) _blockingObject += 1;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6) _blockingObject -= 1;
+        if (collision.gameObject.layer == 6 && collision.gameObject.transform != this.gameObject.transform.parent) _blockingObject -= 1;
     }
 }
