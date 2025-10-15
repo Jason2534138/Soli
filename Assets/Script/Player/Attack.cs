@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using UnityEditor.Events;
+using UnityEngine.Events;
 
 public class Attack : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class Attack : MonoBehaviour
     [SerializeField] private Vector2 knockBack;
     public bool canBlock;
     public bool canAttack;
+
+    public UnityEvent AttackConnect;
     
     //public bool isBlocked;
     
@@ -28,9 +32,9 @@ public class Attack : MonoBehaviour
     {
         if (canAttack)
         {
-            Debug.Log("hit");
             IDamageable _idamageable = collision.GetComponentInParent<IDamageable>();
             _idamageable?.OnHit(damage);
+            AttackConnect.Invoke();
         }
         else if (canBlock)
         {

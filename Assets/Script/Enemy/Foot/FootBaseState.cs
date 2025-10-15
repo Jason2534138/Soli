@@ -36,6 +36,7 @@ public class FootBasseState : BaseState
     {
         base.LogicUpdate();
         GroundCheck();
+        if(Input.GetKeyDown(KeyCode.T)) _sm.ChangeState(_sm.footHit);
     }
     private void GroundCheck()
     {
@@ -56,7 +57,7 @@ public class FootBasseState : BaseState
     private void SetUp()
     {
 
-        _health.healthSystem.Hit += Hit;
+        
         _health.healthSystem.Die += Die;
     }
     private void Stun(object sender, EventArgs e)
@@ -64,10 +65,7 @@ public class FootBasseState : BaseState
 
         stateMachine.ChangeState(_sm.footStun);
     }
-    protected void Hit()
-    {
-        stateMachine.ChangeState(_sm.footHit);
-    }
+    
     protected void Die()
     {
 

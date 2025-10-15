@@ -13,9 +13,10 @@ public class Foothit : FootBasseState
     public override void Enter()
     {
         base.Enter();
-
+        Debug.Log("hit");
+        _animator.Play("Foot_Hit");
         stunTimer = 0f;
-        _sm._animator.Play("Foot_Hit");
+        
 
     }
     public override void LogicUpdate()
@@ -33,6 +34,7 @@ public class Foothit : FootBasseState
     public override void Exit()
     {
         base.Exit();
+        
     }
 
 }

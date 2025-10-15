@@ -22,6 +22,7 @@ public class PlayerAirCombo : PlayerAttackState
     Attacks currentAttack;
     enum Weapon { knife, spear }
     Weapon currentWeapon;
+    
     public override void Enter()
     {
 
@@ -35,10 +36,10 @@ public class PlayerAirCombo : PlayerAttackState
         _comboTimer = 0f;
 
 
-        _horizontalInput = 0;
-        Vector2 vel = _sm.rb.velocity;
-        vel.x = _horizontalInput * _sm.speed;
-        _sm.rb.velocity = vel;
+        //_horizontalInput = 0;
+        //Vector2 vel = _sm.rb.velocity;
+        //vel.x = _horizontalInput * _sm.speed;
+        //_sm.rb.velocity = vel;
     }
     public override void LogicUpdate()
     {
@@ -58,6 +59,7 @@ public class PlayerAirCombo : PlayerAttackState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+        
         if (_attackPressedTimer > 0f && _comboTimer > _comboTimeMin)
         {
             _attackPressedTimer = 0f;
@@ -67,6 +69,7 @@ public class PlayerAirCombo : PlayerAttackState
 
 
         }
+        
 
 
     }
@@ -85,14 +88,14 @@ public class PlayerAirCombo : PlayerAttackState
 
                 break;
             case Attacks.attack1:
-                _sm.animator.Play("Player_attack_airCombo_2");
+                _sm.animator.Play("Player_attack_airCombo_1");
                 _comboTimeMax = 0.583f;
                 _comboTimeMin = 0.42f;
 
 
                 break;
             case Attacks.attack2:
-                _sm.animator.Play("Player_attack_airCombo_3");
+                _sm.animator.Play("Player_attack_airCombo_1");
                 _comboTimeMax = 0.75f;
                 _comboTimeMin = 0.5f;
 
@@ -107,18 +110,18 @@ public class PlayerAirCombo : PlayerAttackState
         switch (comboCount)
         {
             case 1:
-                Debug.Log(_comboCount);
+                
                 currentAttack = Attacks.attack0;
 
 
                 break;
             case 2:
-                Debug.Log(_comboCount);
+                
                 currentAttack = Attacks.attack1;
 
                 break;
             case 3:
-                Debug.Log(_comboCount);
+                
                 currentAttack = Attacks.attack2;
                 _comboCount = 0;
 

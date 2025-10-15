@@ -6,7 +6,7 @@ public class FlyIdleState : FlyBaseState
 {
     public FlyIdleState(FlySM stateMachine) : base("FlyIdleState", stateMachine){}
     private int dir = 1;
-    private bool _isWalking = true;
+    //private bool _isWalking = true;
     private float _speed = 5f;
     
     public override void Enter()

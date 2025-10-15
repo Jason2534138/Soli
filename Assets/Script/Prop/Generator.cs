@@ -24,7 +24,7 @@ public class Generator : MonoBehaviour, IControllableProp
         if (collision.CompareTag("Player"))
         {
             _playerInRange = true;
-            Debug.Log("Player entered Generator range.");
+            //Debug.Log("Player entered Generator range.");
         }
     }
 
@@ -33,7 +33,7 @@ public class Generator : MonoBehaviour, IControllableProp
         if (collision.CompareTag("Player"))
         {
             _playerInRange = false;
-            Debug.Log("Player exited Generator range.");
+            //Debug.Log("Player exited Generator range.");
         }
     }
 
