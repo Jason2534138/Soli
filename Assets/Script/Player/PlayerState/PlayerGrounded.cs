@@ -15,6 +15,7 @@ public class PlayerGrounded : BaseState
     public override void Enter()
     {
         base.Enter();
+        _sm = ((PlayerMovementSM)stateMachine);
         _detector  = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
         _jumpForce = ((PlayerMovementSM)stateMachine)._jumpForce;
     }

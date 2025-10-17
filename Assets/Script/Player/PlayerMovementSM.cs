@@ -37,6 +37,8 @@ public class PlayerMovementSM : StateMachine, IDamageable
     public float speed = 4f;
     public MP _mp;
     public float _jumpForce;
+
+    
     
 
     private void Awake()
@@ -75,5 +77,10 @@ public class PlayerMovementSM : StateMachine, IDamageable
         //}
         ChangeState(hurtState);
         _playerHealth.healthSystem.Damage(damage);
+    }
+    public void Pogo()
+    {
+        Debug.Log("POGO");
+        rb.velocity = new Vector2(rb.velocity.x, _jumpForce);
     }
 }

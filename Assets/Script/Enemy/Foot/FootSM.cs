@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Burst.CompilerServices;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -28,6 +29,7 @@ public class FootSM : StateMachine, IDamageable, IBlockable
     public Rigidbody2D rb;
 
     
+    
 
     public void Awake()
     {
@@ -44,9 +46,9 @@ public class FootSM : StateMachine, IDamageable, IBlockable
 
     public void OnHit(int damage)
     {
-        
         _health.healthSystem.Damage(damage);
         ChangeState(footHit);
+        
     }
 
     protected override BaseState GetInitialState()
@@ -67,5 +69,6 @@ public class FootSM : StateMachine, IDamageable, IBlockable
         footDeath = new FootDeath(this);
         footStun = new FootStun(this);
         footBlock = new FootBlocked(this);
+        
     }
 }

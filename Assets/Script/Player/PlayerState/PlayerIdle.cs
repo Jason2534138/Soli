@@ -12,7 +12,7 @@ public class PlayerIdle : PlayerGrounded
     public override void Enter()
     {
         base.Enter();
-        _horizontalInput = 0;
+        
        
         Vector2 vel = ((PlayerMovementSM)stateMachine).rb.velocity;
         vel.x = 0;
