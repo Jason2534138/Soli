@@ -13,11 +13,10 @@ public class DroneMovement : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField]
-
-    enum State {active, follow};
-    State state;
+    private PlayerTeleport playerTeleport;
 
     private Vector3 targetPosition;
+
 
     private void Start()
     {
@@ -26,34 +25,15 @@ public class DroneMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        switch (state)
-        {
-            case State.active:
-                Active();
-                break;
-            case State.follow:
-                Follow();
-                break;
-        }
-        
-    }
-    private void Active()
-    {
-
-    }
-    private void ChangeState()
-    {
-        if(state == State.active) state = State.follow;
-        else if(state == State.follow) state = State.active;
-    }
-    private void Follow()
-    {
         Vector3 targetPosition = target.position + offset;
+        if (Input.GetKeyDown(KeyCode.T) && playerTeleport.currentTeleporter != null)
+        {
+            transform.position = playerTeleport.currentTeleporter.GetComponent<Teleporter>().GetDestination().position;
 
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        }
+        else transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
 
+        
         Flip();
     }
     private void Flip()

@@ -25,6 +25,7 @@ public class PlayerMoving : PlayerGrounded
         if (Mathf.Abs(_horizontalInput) < Mathf.Epsilon)
         {
             stateMachine.ChangeState(_sm.idleState);
+            
         }
     }
     public override void PhysicsUpdate()
@@ -35,6 +36,7 @@ public class PlayerMoving : PlayerGrounded
         _sm.rb.velocity = vel;
         
         Flip();
+
     }
     private void Flip()
     {

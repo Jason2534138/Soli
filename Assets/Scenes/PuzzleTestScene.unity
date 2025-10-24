@@ -17207,10 +17207,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Generator
       objectReference: {fileID: 0}
-    - target: {fileID: 5481750283491162438, guid: b7e149af5718ffa48a2d52a94bbd2821, type: 3}
-      propertyPath: m_TagString
-      value: Generator
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18179,10 +18175,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6138094614442768112, guid: 5f0bbdae35431bb43992b1b926c11ba4, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 975664708}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
