@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovementSM : StateMachine, IDamageable
 {
+    #region SetUp
     [HideInInspector]
     public PlayerIdle idleState;
     [HideInInspector]
@@ -38,8 +39,10 @@ public class PlayerMovementSM : StateMachine, IDamageable
     public MP _mp;
     public float _jumpForce;
 
-    
-    
+    public DroneMovement Drone;
+
+    #endregion
+
 
     private void Awake()
     {
@@ -64,7 +67,15 @@ public class PlayerMovementSM : StateMachine, IDamageable
     {
         return idleState;
     }
+    private void Update()
+    {
+        
+        if (Input.GetMouseButtonDown(1))
+        {
+            
 
+        }
+    }
     public void OnHit(int damage)
     {
         //if (spearBlockState.isBlocking)
@@ -80,7 +91,11 @@ public class PlayerMovementSM : StateMachine, IDamageable
     }
     public void Pogo()
     {
-        Debug.Log("POGO");
         rb.velocity = new Vector2(rb.velocity.x, _jumpForce);
+    }
+    
+    private void Interact(GameObject generator)
+    {
+        
     }
 }

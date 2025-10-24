@@ -8,7 +8,7 @@ public class SandBag : MonoBehaviour
     private Health health;
 
     private float recoverTime;
-    enum State { Idle, Stuned, Dead};
+    enum State {Idle, Stuned, Dead};
 
     State state;
 
@@ -19,9 +19,6 @@ public class SandBag : MonoBehaviour
     private void Awake()
     {
         health = GetComponent<Health>();
-        
-        
-
     }
     // Update is called once per frame
     void Update()
@@ -60,10 +57,7 @@ public class SandBag : MonoBehaviour
 
     private void UpdateStuned()
     {
-        
         recoverTime += Time.deltaTime;
-        
-        
     }
 
     private void UpdateIdle()
