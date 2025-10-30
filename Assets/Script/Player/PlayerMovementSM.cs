@@ -27,6 +27,10 @@ public class PlayerMovementSM : StateMachine, IDamageable
     public PlayerDashing dashing;
     [HideInInspector]
     public PlayerDashAttack dashAttack;
+    [HideInInspector]
+    public PlayerWallClimb wallClimbState;
+    [HideInInspector]
+    public PlayerWallJump wallJumpState;
 
     public bool isFacingRight = true;
 
@@ -54,6 +58,8 @@ public class PlayerMovementSM : StateMachine, IDamageable
         spearBlockState = new PlayerSpearBlock(this);
         hurtState = new PlayerHurtkState(this);
         dashing = new PlayerDashing(this);
+        wallClimbState = new PlayerWallClimb(this);
+        wallJumpState = new PlayerWallJump(this);
         _mp = GetComponent<MP>();
         _playerHealth = GetComponent<Health>();
         _playerHealth.SetUp(100);
