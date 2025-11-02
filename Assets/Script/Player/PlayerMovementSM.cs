@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 //using TMPro.EditorUtilities;
@@ -48,6 +49,7 @@ public class PlayerMovementSM : StateMachine, IDamageable
     private void Awake()
     {
         //rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         idleState = new PlayerIdle(this);
         blockAttackState = new PlayerBlockAttackState(this);
         movingState = new PlayerMoving(this);
@@ -88,5 +90,10 @@ public class PlayerMovementSM : StateMachine, IDamageable
     {
         Debug.Log("POGO");
         rb.velocity = new Vector2(rb.velocity.x, _jumpForce);
+    }
+
+    internal void ChangeState(PlayerWallJump wallJumpState)
+    {
+        throw new NotImplementedException();
     }
 }

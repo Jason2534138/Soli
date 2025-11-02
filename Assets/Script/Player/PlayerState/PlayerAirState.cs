@@ -5,14 +5,19 @@ using UnityEngine.XR;
 
 public class PlayerAirState : BaseState
 {
-    private float _horizontalInput;
-    private Detector _detector;
+    protected float _horizontalInput;
+    protected Detector _detector;
 
     private PlayerMovementSM _sm;
     public PlayerAirState(PlayerMovementSM stateMachine) : base("PlayerAirState", stateMachine)
     {
         _sm = (PlayerMovementSM)stateMachine;
     }
+
+    public PlayerAirState(string name, StateMachine stateMachine) : base(name, stateMachine)
+    {
+    }
+
     public override void Enter()
     {
         base.Enter();
@@ -30,7 +35,13 @@ public class PlayerAirState : BaseState
             else stateMachine.ChangeState(_sm.idleState);
         }
         if (Input.GetButtonDown("Attack")) stateMachine.ChangeState(((PlayerMovementSM)stateMachine).airComboState);
+        
+        if (_detector.IsTouchingWall() && !_detector.IsGrounded() && _sm.rb.velocity.y < 0)
+        {
+            stateMachine.ChangeState(_sm.wallClimbState);
+        }
     }
+
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
