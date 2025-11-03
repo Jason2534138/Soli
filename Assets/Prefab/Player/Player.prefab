@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f6c5166a062e94587e6b8d1e034bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallJumpState: {fileID: 0}
   isFacingRight: 1
   animator: {fileID: 7019750262432685499}
   rb: {fileID: 6549810141242118879}
@@ -357,6 +358,11 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  wallBoxSize: {x: 0.2, y: 1}
+  wallCastDistance: 0.88
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &8404377765546766607
 BoxCollider2D:
   m_ObjectHideFlags: 0
