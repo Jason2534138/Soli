@@ -7,15 +7,17 @@ public class PlayerAirState : BaseState
 {
     private float _horizontalInput;
     private Detector _detector;
-
+    
     private PlayerMovementSM _sm;
     public PlayerAirState(PlayerMovementSM stateMachine) : base("PlayerAirState", stateMachine)
     {
         _sm = (PlayerMovementSM)stateMachine;
+        
     }
     public override void Enter()
     {
         base.Enter();
+        _sm._jumpLeft = _sm._maxJump;
         _detector = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
 
     }
@@ -24,12 +26,24 @@ public class PlayerAirState : BaseState
         base.LogicUpdate();
         
         _horizontalInput = Input.GetAxis("Horizontal");
+        if (_detector.IsWalled() && _sm.rb.velocity.y < 0f && _sm.rb.velocity.x != 0f) stateMachine.ChangeState(_sm.wallJumpState);
         if (_detector.IsGrounded())
         {
             if (_horizontalInput > Mathf.Epsilon) stateMachine.ChangeState(_sm.movingState);
             else stateMachine.ChangeState(_sm.idleState);
         }
         if (Input.GetButtonDown("Attack")) stateMachine.ChangeState(((PlayerMovementSM)stateMachine).airComboState);
+        if (Input.GetButtonDown("Jump") && _sm._jumpLeft > 0)
+        {
+            
+            _sm._jumpLeft -= 1;
+            
+            Vector2 vel;
+            vel = ((PlayerMovementSM)stateMachine).rb.velocity;
+            vel.y = _sm._jumpForce;
+            ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+        }
+
     }
     public override void PhysicsUpdate()
     {
@@ -42,6 +56,11 @@ public class PlayerAirState : BaseState
         Flip();
 
     }
+    public override void Exit()
+    {
+        base.Exit();
+        
+    }
     private void Flip()
     {
         if (_sm.isFacingRight && _horizontalInput < 0f || !_sm.isFacingRight && _horizontalInput > 0f)
@@ -53,4 +72,5 @@ public class PlayerAirState : BaseState
             _sm.transform.localScale = localscale;
         }
     }
+    
 }

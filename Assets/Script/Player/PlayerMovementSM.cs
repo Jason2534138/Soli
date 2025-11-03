@@ -27,19 +27,33 @@ public class PlayerMovementSM : StateMachine, IDamageable
     public PlayerDashing dashing;
     [HideInInspector]
     public PlayerDashAttack dashAttack;
-
+    [HideInInspector]
+    public PlayerWallJumpState wallJumpState;
+    [HideInInspector]
     public bool isFacingRight = true;
-
+    [HideInInspector]
     public Animator animator;
+    [HideInInspector]
     public Rigidbody2D rb;
-      
+    [HideInInspector]
     public Health _playerHealth;
     public float speed = 4f;
+    [HideInInspector]
     public MP _mp;
     public float _jumpForce;
 
-    
-    
+    public int _maxWallJump;
+    [HideInInspector]
+    public int _wallJumpLeft;
+
+    public int _maxJump;
+    [HideInInspector]
+    public int _jumpLeft;
+
+
+
+
+
 
     private void Awake()
     {
@@ -54,6 +68,7 @@ public class PlayerMovementSM : StateMachine, IDamageable
         spearBlockState = new PlayerSpearBlock(this);
         hurtState = new PlayerHurtkState(this);
         dashing = new PlayerDashing(this);
+        wallJumpState = new PlayerWallJumpState(this);
         _mp = GetComponent<MP>();
         _playerHealth = GetComponent<Health>();
         _playerHealth.SetUp(100);
