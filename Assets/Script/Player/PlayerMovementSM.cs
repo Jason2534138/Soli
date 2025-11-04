@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 //using TMPro.EditorUtilities;
@@ -28,36 +29,27 @@ public class PlayerMovementSM : StateMachine, IDamageable
     [HideInInspector]
     public PlayerDashAttack dashAttack;
     [HideInInspector]
-    public PlayerWallJumpState wallJumpState;
+    public PlayerWallClimb wallClimbState;
     [HideInInspector]
+    public PlayerWallJump wallJumpState;
+
     public bool isFacingRight = true;
-    [HideInInspector]
+
     public Animator animator;
-    [HideInInspector]
     public Rigidbody2D rb;
-    [HideInInspector]
+      
     public Health _playerHealth;
     public float speed = 4f;
-    [HideInInspector]
     public MP _mp;
     public float _jumpForce;
 
-    public int _maxWallJump;
-    [HideInInspector]
-    public int _wallJumpLeft;
-
-    public int _maxJump;
-    [HideInInspector]
-    public int _jumpLeft;
-
-
-
-
-
+    
+    
 
     private void Awake()
     {
         //rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         idleState = new PlayerIdle(this);
         blockAttackState = new PlayerBlockAttackState(this);
         movingState = new PlayerMoving(this);
@@ -68,7 +60,8 @@ public class PlayerMovementSM : StateMachine, IDamageable
         spearBlockState = new PlayerSpearBlock(this);
         hurtState = new PlayerHurtkState(this);
         dashing = new PlayerDashing(this);
-        wallJumpState = new PlayerWallJumpState(this);
+        wallClimbState = new PlayerWallClimb(this);
+        wallJumpState = new PlayerWallJump(this);
         _mp = GetComponent<MP>();
         _playerHealth = GetComponent<Health>();
         _playerHealth.SetUp(100);
@@ -97,5 +90,10 @@ public class PlayerMovementSM : StateMachine, IDamageable
     {
         Debug.Log("POGO");
         rb.velocity = new Vector2(rb.velocity.x, _jumpForce);
+    }
+
+    internal void ChangeState(PlayerWallJump wallJumpState)
+    {
+        throw new NotImplementedException();
     }
 }
