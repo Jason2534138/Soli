@@ -5,22 +5,19 @@ using UnityEngine.XR;
 
 public class PlayerAirState : BaseState
 {
-    protected float _horizontalInput;
-    protected Detector _detector;
-
+    private float _horizontalInput;
+    private Detector _detector;
+    
     private PlayerMovementSM _sm;
     public PlayerAirState(PlayerMovementSM stateMachine) : base("PlayerAirState", stateMachine)
     {
         _sm = (PlayerMovementSM)stateMachine;
+        
     }
-
-    public PlayerAirState(string name, StateMachine stateMachine) : base(name, stateMachine)
-    {
-    }
-
     public override void Enter()
     {
         base.Enter();
+        _sm._jumpLeft = _sm._maxJump;
         _detector = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
 
     }
@@ -29,19 +26,25 @@ public class PlayerAirState : BaseState
         base.LogicUpdate();
         
         _horizontalInput = Input.GetAxis("Horizontal");
+        if (_detector.IsWalled() && _sm.rb.velocity.y < 0f && _sm.rb.velocity.x != 0f) stateMachine.ChangeState(_sm.wallJumpState);
         if (_detector.IsGrounded())
         {
             if (_horizontalInput > Mathf.Epsilon) stateMachine.ChangeState(_sm.movingState);
             else stateMachine.ChangeState(_sm.idleState);
         }
         if (Input.GetButtonDown("Attack")) stateMachine.ChangeState(((PlayerMovementSM)stateMachine).airComboState);
-        
-        if (_detector.IsTouchingWall() && !_detector.IsGrounded() && _sm.rb.velocity.y < 0)
+        if (Input.GetButtonDown("Jump") && _sm._jumpLeft > 0)
         {
-            stateMachine.ChangeState(_sm.wallClimbState);
+            
+            _sm._jumpLeft -= 1;
+            
+            Vector2 vel;
+            vel = ((PlayerMovementSM)stateMachine).rb.velocity;
+            vel.y = _sm._jumpForce;
+            ((PlayerMovementSM)stateMachine).rb.velocity = vel;
         }
-    }
 
+    }
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
@@ -52,6 +55,11 @@ public class PlayerAirState : BaseState
         else _sm.animator.Play("Player_fall 0");
         Flip();
 
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        
     }
     private void Flip()
     {
@@ -64,4 +72,5 @@ public class PlayerAirState : BaseState
             _sm.transform.localScale = localscale;
         }
     }
+    
 }
