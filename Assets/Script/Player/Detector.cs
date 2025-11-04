@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,5 +52,10 @@ public class Detector : MonoBehaviour
     {
         Gizmos.DrawWireCube(transform.position-transform.up * castDistance, boxSize);
         Gizmos.DrawWireCube(transform.position+transform.right * wallCastDistance, wallBoxSize);
+    }
+
+    internal bool IsTouchingWall()
+    {
+        throw new NotImplementedException();
     }
 }
