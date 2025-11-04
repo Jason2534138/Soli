@@ -17,7 +17,7 @@ public class PlayerAirState : BaseState
     public override void Enter()
     {
         base.Enter();
-        _sm._jumpLeft = _sm._maxJump;
+        
         _detector = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
 
     }

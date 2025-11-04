@@ -35,7 +35,7 @@ public class PlayerWallJumpState : BaseState
             exitTimer -= Time.deltaTime;
             if (exitTimer < 0f) stateMachine.ChangeState(_sm.airState);
         }
-        else exitTimer = 0.2f;
+        else exitTimer = 0.08f;
         if (_detector.IsGrounded())
         {
             stateMachine.ChangeState(_sm.idleState);
@@ -44,14 +44,27 @@ public class PlayerWallJumpState : BaseState
         {
            stateMachine.ChangeState(_sm.airState);     
         }
-        if (Input.GetButtonDown("Jump") && _sm._wallJumpLeft > 0)
+        if (Input.GetButtonDown("Jump"))
         {
-            _sm._wallJumpLeft -= 1;
-            Vector2 vel;
-            vel = ((PlayerMovementSM)stateMachine).rb.velocity;
-            vel.y = _sm._jumpForce;
-            vel.x = _sm.transform.localScale.x * -10f;
-            ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+            if (_sm._wallJumpLeft > 0)
+            {
+                _sm._wallJumpLeft -= 1;
+                Vector2 vel;
+                vel = ((PlayerMovementSM)stateMachine).rb.velocity;
+                vel.y = _sm._jumpForce;
+                vel.x = _sm.transform.localScale.x * -10f;
+                ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+            }
+            else if(_sm._jumpLeft > 0)
+            {
+                _sm._jumpLeft -= 1;
+                _sm._wallJumpLeft -= 1;
+                Vector2 vel;
+                vel = ((PlayerMovementSM)stateMachine).rb.velocity;
+                vel.y = _sm._jumpForce;
+                vel.x = _sm.transform.localScale.x * -10f;
+                ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+            }
         }
     }
     public override void Exit()
