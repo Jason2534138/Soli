@@ -4,36 +4,52 @@ using UnityEngine;
 
 public class Detector : MonoBehaviour
 {
-    [Header("Ground Check")]
-    public Vector2 boxSize = new Vector2(0.5f, 0.1f);
-    public float castDistance = 0.1f;
+    public Vector2 boxSize;
+    public float castDistance;
     public LayerMask groundLayer;
 
-    [Header("Wall Check")]
-    public Vector2 wallBoxSize = new Vector2(0.2f, 1.0f); // ← 修正新增
-    public float wallCastDistance = 0.1f;                 // ← 修正新增
-    public LayerMask wallLayer;                           // ← 修正新增
-
+    public Vector2 wallBoxSize;
+    public float wallCastDistance;
+    public bool IsWalled()
+    {
+        if(this.transform.localScale.x > 0)
+        {
+            if (Physics2D.BoxCast(transform.position, wallBoxSize, 0, transform.right, wallCastDistance, groundLayer))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (Physics2D.BoxCast(transform.position, wallBoxSize, 0, -transform.right, wallCastDistance, groundLayer))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+    }
     public bool IsGrounded()
     {
-        return Physics2D.BoxCast(transform.position, boxSize, 0f, -transform.up, castDistance, groundLayer);
+        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
     }
-
-    public bool IsTouchingWall()
-    {
-        float dir = transform.localScale.x > 0 ? 1f : -1f;
-        Vector2 castDir = new Vector2(dir, 0f);
-        RaycastHit2D hitWall = Physics2D.BoxCast(transform.position, wallBoxSize, 0f, castDir, wallCastDistance, wallLayer);
-        return hitWall.collider != null;
-    }
-
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position - (Vector3)transform.up * castDistance, boxSize);
-
-        Gizmos.color = Color.red;
-        float dir = transform.localScale.x > 0 ? 1f : -1f;
-        Gizmos.DrawWireCube(transform.position + Vector3.right * dir * wallCastDistance, wallBoxSize);
+        Gizmos.DrawWireCube(transform.position-transform.up * castDistance, boxSize);
+        Gizmos.DrawWireCube(transform.position+transform.right * wallCastDistance, wallBoxSize);
     }
 }

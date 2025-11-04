@@ -15,7 +15,10 @@ public class PlayerGrounded : BaseState
     public override void Enter()
     {
         base.Enter();
+        
         _sm = ((PlayerMovementSM)stateMachine);
+        _sm._jumpLeft = _sm._maxJump;
+        _sm._wallJumpLeft = _sm._maxWallJump;
         _detector  = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
         _jumpForce = ((PlayerMovementSM)stateMachine)._jumpForce;
     }
@@ -24,36 +27,30 @@ public class PlayerGrounded : BaseState
         
         base.LogicUpdate();
         _horizontalInput = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Attack"))
-        {
-            if (_detector.IsGrounded())
+
+        
+            if (Input.GetButtonDown("Attack"))
             {
-                stateMachine.ChangeState(((PlayerMovementSM)stateMachine).groundComboState);
+                 stateMachine.ChangeState(((PlayerMovementSM)stateMachine).groundComboState);
             }
-            
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (_detector.IsGrounded())
+            if (Input.GetKeyDown(KeyCode.E))
             {
+
                 stateMachine.ChangeState(((PlayerMovementSM)stateMachine).spearBlockState);
             }
-
-        }
+        
+        
         if (Input.GetButtonDown("Dash"))
         {
-            if (true)
-            {
-                stateMachine.ChangeState(((PlayerMovementSM)stateMachine).dashing);
-            }
-
+               //只在此可衝刺
+               stateMachine.ChangeState(((PlayerMovementSM)stateMachine).dashing);
         }
         if (!_detector.IsGrounded()) stateMachine.ChangeState(((PlayerMovementSM)stateMachine).airState);
 
     }
     public override void PhysicsUpdate()
     {
-        if (Input.GetButton("Jump") && _detector.IsGrounded())
+        if (Input.GetButton("Jump"))
         {
             base.PhysicsUpdate();
             Vector2 vel;

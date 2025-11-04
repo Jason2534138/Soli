@@ -189,7 +189,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_wall climb
+  m_Name: Player_attack_airCombo_3
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -202,20 +202,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cad01e4633683e44fb78aaf4920b0788, type: 2}
+  m_Motion: {fileID: 7400000, guid: 13007f7023d06b647bd8552e931fcacf, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-2698499014051552299
+--- !u!1102 &-3073535347671476041
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_wall jump
+  m_Name: Player_wall
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -228,7 +228,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 442c65ea4098bc9439e9e4e878643e37, type: 2}
+  m_Motion: {fileID: 7400000, guid: 8404c61e238430840bbd96ddab19ab4e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -862,7 +862,7 @@ AnimatorStateMachine:
     m_Position: {x: -130, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3777268842875101338}
-    m_Position: {x: -10, y: -220, z: 0}
+    m_Position: {x: 280, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8594510381965703514}
     m_Position: {x: 350, y: 30, z: 0}
@@ -891,8 +891,8 @@ AnimatorStateMachine:
     m_State: {fileID: -4589243306736298265}
     m_Position: {x: 710, y: -10, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -2698499014051552299}
-    m_Position: {x: -10, y: -170, z: 0}
+    m_State: {fileID: -3073535347671476041}
+    m_Position: {x: 740, y: 50, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
