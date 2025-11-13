@@ -22,7 +22,7 @@ public class PlayerWallJumpState : BaseState
     {
         base.Enter();
         _wallDetector = _sm.GetComponentInChildren<WallDetector>();
-        if (_wallDetector.AttachObj != null) _sm.gameObject.transform.parent = _wallDetector.AttachObj.transform;
+        //if (_wallDetector.AttachObj != null) _sm.gameObject.transform.parent = _wallDetector.AttachObj.transform;
         _sm.rb.gravityScale = 0f;
         _sm.rb.velocity = Vector2.zero;
         _detector = _sm.GetComponent<Detector>();
