@@ -43,10 +43,7 @@ public class PlayerWallJumpState : BaseState
         {
             stateMachine.ChangeState(_sm.idleState);
         }
-        else if(!_detector.IsWalled())
-        {
-           stateMachine.ChangeState(_sm.airState);     
-        }
+        
         if (Input.GetButtonDown("Jump"))
         {
             if (_sm._wallJumpLeft > 0)

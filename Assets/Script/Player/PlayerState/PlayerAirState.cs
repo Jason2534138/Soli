@@ -26,7 +26,7 @@ public class PlayerAirState : BaseState
         base.LogicUpdate();
         
         _horizontalInput = Input.GetAxis("Horizontal");
-        if (_detector.IsWalled() && _sm.rb.velocity.y < 0f && _sm.rb.velocity.x != 0f) stateMachine.ChangeState(_sm.wallJumpState);
+        if (_detector.IsWalled() && _sm.rb.velocity.y < 0f && Input.GetAxisRaw("Horizontal") != 0) stateMachine.ChangeState(_sm.wallJumpState);
         if (_detector.IsGrounded())
         {
             if (_horizontalInput > Mathf.Epsilon) stateMachine.ChangeState(_sm.movingState);
