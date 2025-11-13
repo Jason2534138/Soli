@@ -27,10 +27,7 @@ public class WallPlatform2 : MonoBehaviour
         {
             if (Vector2.Distance(this.transform.position, _path[current].position) > 0.5f)
             {
-                Vector3 dir;
-                dir = (_path[current].position - transform.position).normalized;
-                //_rb.MovePosition(_rb.position + (Vector2)(dir * _speed * Time.deltaTime));
-                _rb.velocity = dir * _speed;
+                this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, 0.1f);
             }
             else
             {

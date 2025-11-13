@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovementSM : StateMachine, IDamageable
 {
+    #region States
     [HideInInspector]
     public PlayerIdle idleState;
     [HideInInspector]
@@ -29,6 +30,7 @@ public class PlayerMovementSM : StateMachine, IDamageable
     public PlayerDashAttack dashAttack;
     [HideInInspector]
     public PlayerWallJumpState wallJumpState;
+    #endregion
     [HideInInspector]
     public bool isFacingRight = true;
     [HideInInspector]
@@ -50,7 +52,7 @@ public class PlayerMovementSM : StateMachine, IDamageable
     [HideInInspector]
     public int _jumpLeft;
 
-
+    
 
 
 
@@ -58,17 +60,7 @@ public class PlayerMovementSM : StateMachine, IDamageable
     private void Awake()
     {
         //rb = GetComponent<Rigidbody2D>();
-        idleState = new PlayerIdle(this);
-        blockAttackState = new PlayerBlockAttackState(this);
-        movingState = new PlayerMoving(this);
-        groundComboState = new PlayerGroundCombo(this);
-        airState = new PlayerAirState(this);
-        dashAttack = new PlayerDashAttack(this);
-        airComboState = new PlayerAirCombo(this);
-        spearBlockState = new PlayerSpearBlock(this);
-        hurtState = new PlayerHurtkState(this);
-        dashing = new PlayerDashing(this);
-        wallJumpState = new PlayerWallJumpState(this);
+        SetUp();
         _mp = GetComponent<MP>();
         _playerHealth = GetComponent<Health>();
         _playerHealth.SetUp(100);
@@ -97,5 +89,19 @@ public class PlayerMovementSM : StateMachine, IDamageable
     {
         Debug.Log("POGO");
         rb.velocity = new Vector2(rb.velocity.x, _jumpForce);
+    }
+    private void SetUp()
+    {
+        idleState = new PlayerIdle(this);
+        blockAttackState = new PlayerBlockAttackState(this);
+        movingState = new PlayerMoving(this);
+        groundComboState = new PlayerGroundCombo(this);
+        airState = new PlayerAirState(this);
+        dashAttack = new PlayerDashAttack(this);
+        airComboState = new PlayerAirCombo(this);
+        spearBlockState = new PlayerSpearBlock(this);
+        hurtState = new PlayerHurtkState(this);
+        dashing = new PlayerDashing(this);
+        wallJumpState = new PlayerWallJumpState(this);
     }
 }
