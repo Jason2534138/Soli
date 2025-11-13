@@ -54,6 +54,7 @@ public class PlayerWallJumpState : BaseState
                 vel.y = _sm._jumpForce;
                 vel.x = _sm.transform.localScale.x * -10f;
                 ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+                stateMachine.ChangeState(_sm.airState);
             }
             else if(_sm._jumpLeft > 0)
             {
@@ -64,6 +65,7 @@ public class PlayerWallJumpState : BaseState
                 vel.y = _sm._jumpForce;
                 vel.x = _sm.transform.localScale.x * -10f;
                 ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+                stateMachine.ChangeState(_sm.airState);
             }
         }
     }
