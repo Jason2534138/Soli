@@ -10,6 +10,9 @@ public class PlayerWallJumpState : BaseState
     private float _horizontalInput;
     private float _gravity;
     private float exitTimer;
+    private WallDetector _wallDetector;
+
+    private GameObject collisionObj;
     public PlayerWallJumpState(PlayerMovementSM stateMachine) : base("PlayerWallJumpState", stateMachine)
     {
         _sm = (PlayerMovementSM)stateMachine;
@@ -18,11 +21,11 @@ public class PlayerWallJumpState : BaseState
     public override void Enter()
     {
         base.Enter();
-        
+        _wallDetector = _sm.GetComponentInChildren<WallDetector>();
+        if (_wallDetector.AttachObj != null) _sm.gameObject.transform.parent = _wallDetector.AttachObj.transform;
         _sm.rb.gravityScale = 0f;
         _sm.rb.velocity = Vector2.zero;
-        Debug.Log("wall");
-        _detector = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
+        _detector = _sm.GetComponent<Detector>();
     }
     public override void LogicUpdate()
     {
@@ -35,29 +38,42 @@ public class PlayerWallJumpState : BaseState
             exitTimer -= Time.deltaTime;
             if (exitTimer < 0f) stateMachine.ChangeState(_sm.airState);
         }
-        else exitTimer = 0.2f;
+        else exitTimer = 0.08f;
         if (_detector.IsGrounded())
         {
             stateMachine.ChangeState(_sm.idleState);
         }
-        else if(!_detector.IsWalled())
+        
+        if (Input.GetButtonDown("Jump"))
         {
-           stateMachine.ChangeState(_sm.airState);     
-        }
-        if (Input.GetButtonDown("Jump") && _sm._wallJumpLeft > 0)
-        {
-            _sm._wallJumpLeft -= 1;
-            Vector2 vel;
-            vel = ((PlayerMovementSM)stateMachine).rb.velocity;
-            vel.y = _sm._jumpForce;
-            vel.x = _sm.transform.localScale.x * -10f;
-            ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+            if (_sm._wallJumpLeft > 0)
+            {
+                _sm._wallJumpLeft -= 1;
+                Vector2 vel;
+                vel = ((PlayerMovementSM)stateMachine).rb.velocity;
+                vel.y = _sm._jumpForce;
+                vel.x = _sm.transform.localScale.x * -10f;
+                ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+                stateMachine.ChangeState(_sm.airState);
+            }
+            else if(_sm._jumpLeft > 0)
+            {
+                _sm._jumpLeft -= 1;
+                _sm._wallJumpLeft -= 1;
+                Vector2 vel;
+                vel = ((PlayerMovementSM)stateMachine).rb.velocity;
+                vel.y = _sm._jumpForce;
+                vel.x = _sm.transform.localScale.x * -10f;
+                ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+                stateMachine.ChangeState(_sm.airState);
+            }
         }
     }
     public override void Exit()
     {
         base.Exit();
         _sm.rb.gravityScale = _gravity;
+        _sm.transform.parent = null;    
     }
     private void Flip()
     {

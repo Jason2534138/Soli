@@ -6,7 +6,6 @@ public class PistonPlatfrom2 : MonoBehaviour
 {
     [SerializeField] private Transform[] _path;
     private int current = 0;
-    private Rigidbody2D _rb;
     [SerializeField] private float _speed;
 
     [SerializeField] private BoxCollider2D[] _detect;
@@ -15,7 +14,6 @@ public class PistonPlatfrom2 : MonoBehaviour
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
         this.transform.position = _path[0].position;
     }
     private void Update()
@@ -26,19 +24,11 @@ public class PistonPlatfrom2 : MonoBehaviour
         {
             if (Vector2.Distance(this.transform.position, _path[current].position) > 0.5f)
             {
-                Vector3 dir;
-                dir = (_path[current].position - transform.position).normalized;
-                //_rb.MovePosition(_rb.position + (Vector2)(dir * _speed * Time.deltaTime));
-                _rb.velocity = dir * _speed;
+                this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, 0.5f);
             }else
             {
-                _rb.velocity = Vector2.zero;
                 ChangePath();
             } 
-        }
-        else
-        {
-            _rb.velocity = Vector2.zero;
         }
     }
 
@@ -62,4 +52,14 @@ public class PistonPlatfrom2 : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 && collision.gameObject.transform != this.gameObject.transform.parent) _blockingObject -= 1;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.position.y > this.transform.position.y) collision.transform.parent = this.transform;
+
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.parent == this.transform) collision.transform.parent = null;
+    }
+
 }
