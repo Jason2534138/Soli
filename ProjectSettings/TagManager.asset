@@ -25,7 +25,7 @@ TagManager:
   - ShowHealth
   - EnemyUI
   - Prop
-  - 
+  - BG
   - 
   - 
   - 
@@ -70,6 +70,9 @@ TagManager:
     locked: 0
   - name: Ui
     uniqueID: 1569949755
+    locked: 0
+  - name: Front
+    uniqueID: 1861073953
     locked: 0
   - name: wallLayer
     uniqueID: 2621766747
