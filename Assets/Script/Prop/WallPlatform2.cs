@@ -27,7 +27,7 @@ public class WallPlatform2 : MonoBehaviour
         {
             if (Vector2.Distance(this.transform.position, _path[current].position) > 0.5f)
             {
-                this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, 0.08f);
+                this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, _speed / 10);
             }
             else
             {
@@ -48,7 +48,7 @@ public class WallPlatform2 : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.position.y > this.transform.position.y) collision.transform.parent = this.transform;
+         collision.transform.parent = this.transform;
 
     }
     private void OnCollisionExit2D(Collision2D collision)

@@ -15,7 +15,7 @@ public class PlayerDashing : PlayerGrounded
     {
         base.Enter();
         Vector2 vel = _sm.rb.velocity;
-        vel.x += _sm.transform.lossyScale.x > 0 ? 15f : -15f;
+        vel.x += _sm.isFacingRight? 15f : -15f;
         _sm.rb.velocity = vel;
         _timer = 0f;
         _sm.animator.Play("Player_dash 0");

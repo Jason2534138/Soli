@@ -22,7 +22,6 @@ public class PlayerWallJumpState : BaseState
     {
         base.Enter();
         _wallDetector = _sm.GetComponentInChildren<WallDetector>();
-        //if (_wallDetector.AttachObj != null) _sm.gameObject.transform.parent = _wallDetector.AttachObj.transform;
         _sm.rb.gravityScale = 0f;
         _sm.rb.velocity = Vector2.zero;
         _detector = _sm.GetComponent<Detector>();
@@ -80,10 +79,10 @@ public class PlayerWallJumpState : BaseState
         if (_sm.isFacingRight && _sm.rb.velocity.x < 0f || !_sm.isFacingRight && _sm.rb.velocity.x > 0f)
         {
             _sm.isFacingRight = !_sm.isFacingRight;
-            //transform.Rotate(0f, 180f, 0f);
-            Vector3 localscale = _sm.transform.localScale;
-            localscale.x *= -1f;
-            _sm.transform.localScale = localscale;
+            _sm.transform.Rotate(0f, 180f, 0f);
+            //Vector3 localscale = _sm.transform.localScale;
+            //localscale.x *= -1f;
+            //_sm.transform.localScale = localscale;
         }
     }
 }
