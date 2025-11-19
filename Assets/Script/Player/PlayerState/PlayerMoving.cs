@@ -43,10 +43,10 @@ public class PlayerMoving : PlayerGrounded
         if (_sm.isFacingRight && _horizontalInput < 0f || !_sm.isFacingRight && _horizontalInput > 0f)
         {
             _sm.isFacingRight = !_sm.isFacingRight;
-            //transform.Rotate(0f, 180f, 0f);
-            Vector3 localscale = _sm.transform.localScale;
-            localscale.x *= -1f;
-            _sm.transform.localScale = localscale;
+            _sm.transform.Rotate(0f, 180f, 0f);
+            //Vector3 localscale = _sm.transform.localScale;
+            //localscale.x *= -1f;
+            //_sm.transform.localScale = localscale;
         }
     }
 }

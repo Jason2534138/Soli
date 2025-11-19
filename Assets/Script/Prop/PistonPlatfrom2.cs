@@ -24,7 +24,7 @@ public class PistonPlatfrom2 : MonoBehaviour
         {
             if (Vector2.Distance(this.transform.position, _path[current].position) > 0.5f)
             {
-                this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, 0.5f);
+                this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, _speed / 10);
             }else
             {
                 ChangePath();

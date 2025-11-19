@@ -26,7 +26,7 @@ public class WallPlatfrom : MonoBehaviour, IControllableProp
        
         if (Vector2.Distance(this.transform.position, _path[current].position) > 0.1f && !Physics2D.OverlapCircle(_detect[_detectCurrent].position, 0.1f, _layerMask))
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, 0.1f);
+            this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, _speed / 10);
         }
         else _rb.velocity = Vector2.zero;
         
