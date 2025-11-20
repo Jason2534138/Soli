@@ -43,14 +43,6 @@ public class WallPlatfrom : MonoBehaviour, IControllableProp
     {
         ChangePath();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.position.y > this.transform.position.y) collision.transform.parent = this.transform;
-
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.transform.parent == this.transform) collision.transform.parent = null;
-    }
+    
 
 }

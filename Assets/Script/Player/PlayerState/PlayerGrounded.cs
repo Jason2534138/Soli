@@ -10,7 +10,7 @@ public class PlayerGrounded : BaseState
     protected Detector _detector;
     protected PlayerMovementSM _sm;
     private float _jumpForce;
-
+    
     public PlayerGrounded(string name, PlayerMovementSM stateMachine) : base(name, stateMachine){ }
     public override void Enter()
     {
@@ -21,6 +21,7 @@ public class PlayerGrounded : BaseState
         _sm._wallJumpLeft = _sm._maxWallJump;
         _detector  = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
         _jumpForce = ((PlayerMovementSM)stateMachine)._jumpForce;
+        
     }
     public override void LogicUpdate()
     {

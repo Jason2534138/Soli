@@ -7,6 +7,7 @@ TagManager:
   - Teleporter
   - Enemy
   - Prop
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -24,9 +25,9 @@ TagManager:
   - PlayerHurtbox
   - ShowHealth
   - EnemyUI
-  - Prop
-  - BG
-  - 
+  - Platfrom
+  - WallDetector
+  - Ground
   - 
   - 
   - 
@@ -70,10 +71,4 @@ TagManager:
     locked: 0
   - name: Ui
     uniqueID: 1569949755
-    locked: 0
-  - name: Front
-    uniqueID: 1861073953
-    locked: 0
-  - name: wallLayer
-    uniqueID: 2621766747
     locked: 0
