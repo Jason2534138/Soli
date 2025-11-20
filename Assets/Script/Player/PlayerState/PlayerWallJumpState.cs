@@ -22,8 +22,9 @@ public class PlayerWallJumpState : BaseState
     {
         base.Enter();
         _wallDetector = _sm.GetComponentInChildren<WallDetector>();
-        _sm.rb.gravityScale = 0f;
         _sm.rb.velocity = Vector2.zero;
+        if(_wallDetector.AttachObj != null)_sm.transform.parent = _wallDetector.AttachObj.transform;
+        _sm.rb.gravityScale = 0f;
         _detector = _sm.GetComponent<Detector>();
     }
     public override void LogicUpdate()
@@ -51,7 +52,7 @@ public class PlayerWallJumpState : BaseState
                 Vector2 vel;
                 vel = ((PlayerMovementSM)stateMachine).rb.velocity;
                 vel.y = _sm._jumpForce;
-                vel.x = _sm.transform.localScale.x * -10f;
+                //vel.x = _sm.transform.localScale.x * -10f;
                 ((PlayerMovementSM)stateMachine).rb.velocity = vel;
                 stateMachine.ChangeState(_sm.airState);
             }
@@ -62,7 +63,7 @@ public class PlayerWallJumpState : BaseState
                 Vector2 vel;
                 vel = ((PlayerMovementSM)stateMachine).rb.velocity;
                 vel.y = _sm._jumpForce;
-                vel.x = _sm.transform.localScale.x * -10f;
+                //vel.x = _sm.transform.localScale.x * -10f;
                 ((PlayerMovementSM)stateMachine).rb.velocity = vel;
                 stateMachine.ChangeState(_sm.airState);
             }
@@ -80,9 +81,7 @@ public class PlayerWallJumpState : BaseState
         {
             _sm.isFacingRight = !_sm.isFacingRight;
             _sm.transform.Rotate(0f, 180f, 0f);
-            //Vector3 localscale = _sm.transform.localScale;
-            //localscale.x *= -1f;
-            //_sm.transform.localScale = localscale;
+            
         }
     }
 }

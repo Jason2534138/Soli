@@ -15,6 +15,8 @@ public class WallPlatform2 : MonoBehaviour
     [SerializeField] private float _speed;
     //rivate bool _isBlocked = false;
 
+    
+
     private void Start()
     {
         this.transform.position = _path[current].position;
@@ -45,15 +47,6 @@ public class WallPlatform2 : MonoBehaviour
         if (current >= _path.Length) current = 0;
         _detectCurrent = current + 1;
         if (_detectCurrent >= _detect.Length) _detectCurrent = 0;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-         collision.transform.parent = this.transform;
-
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if(collision.transform.parent == this.transform) collision.transform.parent = null;
     }
     
 

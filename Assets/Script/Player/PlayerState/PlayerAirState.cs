@@ -9,6 +9,7 @@ public class PlayerAirState : BaseState
     private Detector _detector;
     
     private PlayerMovementSM _sm;
+    private WallDetector _wallDetector;
     public PlayerAirState(PlayerMovementSM stateMachine) : base("PlayerAirState", stateMachine)
     {
         _sm = (PlayerMovementSM)stateMachine;
@@ -17,7 +18,7 @@ public class PlayerAirState : BaseState
     public override void Enter()
     {
         base.Enter();
-        
+        _wallDetector = _sm.GetComponentInChildren<WallDetector>();
         _detector = ((PlayerMovementSM)stateMachine).GetComponent<Detector>();
 
     }
@@ -26,7 +27,7 @@ public class PlayerAirState : BaseState
         base.LogicUpdate();
         
         _horizontalInput = Input.GetAxis("Horizontal");
-        if (_detector.IsWalled() && _sm.rb.velocity.y < 0f && Input.GetAxisRaw("Horizontal") != 0) stateMachine.ChangeState(_sm.wallJumpState);
+        if (_detector.IsWalled() && _sm.rb.velocity.y < 1f && Input.GetAxisRaw("Horizontal") != 0 && _wallDetector.AttachObj != null) stateMachine.ChangeState(_sm.wallJumpState);
         if (_detector.IsGrounded())
         {
             if (_horizontalInput > Mathf.Epsilon) stateMachine.ChangeState(_sm.movingState);
