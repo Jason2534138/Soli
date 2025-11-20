@@ -8,6 +8,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerMoving : PlayerGrounded
 {
+    
     public PlayerMoving(PlayerMovementSM stateMachine) : base("PlayerMoving", stateMachine) 
     {
         _sm = (PlayerMovementSM)stateMachine;
@@ -21,6 +22,7 @@ public class PlayerMoving : PlayerGrounded
     {
         base.LogicUpdate();
         _sm.animator.Play("Player_run 0");
+        _sm.transform.parent = null;
         _horizontalInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(_horizontalInput) < Mathf.Epsilon)
         {
