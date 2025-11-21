@@ -60,8 +60,8 @@ TagManager:
   - name: Background02
     uniqueID: 954455227
     locked: 0
-  - name: Background01
-    uniqueID: 3712705353
+  - name: Ground
+    uniqueID: 4184307421
     locked: 0
   - name: Enemy
     uniqueID: 2941800589
@@ -71,4 +71,10 @@ TagManager:
     locked: 0
   - name: Ui
     uniqueID: 1569949755
+    locked: 0
+  - name: Background01
+    uniqueID: 3712705353
+    locked: 0
+  - name: New Layer 10
+    uniqueID: 1986931965
     locked: 0
