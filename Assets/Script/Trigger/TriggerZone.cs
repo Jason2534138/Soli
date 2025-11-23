@@ -14,7 +14,7 @@ public class TriggerZone : MonoBehaviour
     public UnityEvent onTriggerEnter;
     public UnityEvent onTriggerExit;
 
-    private void OmTriggerEnter2D(Collider2D collision) 
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
         if (alreadyEntered)
             return;
@@ -27,9 +27,9 @@ public class TriggerZone : MonoBehaviour
         if(oneShot)
             alreadyEntered = true;
     }
-    private void OmTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (alreadyEntered)
+        if (alreadyExited)
             return;
 
         if (!string.IsNullOrEmpty(collisionTag) && !collision.CompareTag(collisionTag))
@@ -38,7 +38,7 @@ public class TriggerZone : MonoBehaviour
         onTriggerExit?.Invoke();
 
         if (oneShot)
-            alreadyEntered = true;
+            alreadyExited = true;
     }
 
 }

@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class CameraRegister : MonoBehaviour
 {
-    private void OnEable() 
+    private void OnEnable() 
     {
         CameraManager.Register(GetComponent<CinemachineVirtualCamera>());
     }
