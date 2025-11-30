@@ -6,7 +6,7 @@ using UnityEngine;
 public class LedgeDetection : MonoBehaviour
 {
     [SerializeField] public BoxCollider2D _boxCollider2D;
-    [SerializeField] private CircleCollider2D _circleCollider2D;
+    [SerializeField] private BoxCollider2D _circleCollider2D;
     [SerializeField] private LayerMask _layerMask;
     public bool CanLedgeClimb()
     {

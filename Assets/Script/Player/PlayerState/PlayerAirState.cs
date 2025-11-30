@@ -25,7 +25,7 @@ public class PlayerAirState : BaseState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        
+        Flip();
         _horizontalInput = Input.GetAxis("Horizontal");
         
         if (Input.GetButtonDown("Attack")) stateMachine.ChangeState(((PlayerMovementSM)stateMachine).airComboState);
@@ -44,7 +44,7 @@ public class PlayerAirState : BaseState
         _sm.rb.velocity = vel;
         if (_sm.rb.velocity.y > 0.01f) _sm.animator.Play("Player_jump_up 0");
         else _sm.animator.Play("Player_fall 0");
-        Flip();
+        
     }
     public override void PhysicsUpdate()
     {
