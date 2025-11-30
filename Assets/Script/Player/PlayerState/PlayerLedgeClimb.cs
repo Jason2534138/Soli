@@ -6,8 +6,8 @@ public class PlayerLedgeClimb : BaseState
 {
     private PlayerMovementSM _sm;
     private float _horizontalInput;
-    private Vector2 _offset1 = new Vector2(1.01f, 0.98f);
-    private Vector2 _offset2 = new Vector2(5f, 3f);
+    private Vector2 _offset1 = new Vector2(1.01f, -1f);
+    private Vector2 _offset2 = new Vector2(4f, 3f);
 
     private Vector2 _climbBebunPosition;
     private Vector2 _climbOverPosition;
@@ -28,7 +28,7 @@ public class PlayerLedgeClimb : BaseState
         if (_wallDetector.AttachObj != null) _sm.transform.parent = _wallDetector.AttachObj.transform;
         _gravity = _sm.rb.gravityScale;
         _sm.rb.gravityScale = 0f;
-        Vector2 ledgePosition = _sm.GetComponentInChildren<LedgeDetection>().transform.position;
+        Vector2 ledgePosition = _sm.GetComponentInChildren<WallDetector>().transform.position;
         if (_sm.isFacingRight)
         {
             _climbBebunPosition = ledgePosition + _offset1;
