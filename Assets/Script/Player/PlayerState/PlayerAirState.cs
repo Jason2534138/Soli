@@ -27,34 +27,49 @@ public class PlayerAirState : BaseState
         base.LogicUpdate();
         
         _horizontalInput = Input.GetAxis("Horizontal");
-        if (_detector.IsWalled() && _sm.rb.velocity.y < 1f && Input.GetAxisRaw("Horizontal") != 0 && _wallDetector.AttachObj != null) stateMachine.ChangeState(_sm.wallJumpState);
-        if (_detector.IsGrounded())
-        {
-            if (_horizontalInput > Mathf.Epsilon) stateMachine.ChangeState(_sm.movingState);
-            else stateMachine.ChangeState(_sm.idleState);
-        }
+        
         if (Input.GetButtonDown("Attack")) stateMachine.ChangeState(((PlayerMovementSM)stateMachine).airComboState);
         if (Input.GetButtonDown("Jump") && _sm._jumpLeft > 0)
         {
             
             _sm._jumpLeft -= 1;
             
-            Vector2 vel;
-            vel = ((PlayerMovementSM)stateMachine).rb.velocity;
-            vel.y = _sm._jumpForce;
-            ((PlayerMovementSM)stateMachine).rb.velocity = vel;
+            Vector2 vel2;
+            vel2 = ((PlayerMovementSM)stateMachine).rb.velocity;
+            vel2.y = _sm._jumpForce;
+            ((PlayerMovementSM)stateMachine).rb.velocity = vel2;
         }
-
-    }
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
         Vector2 vel = _sm.rb.velocity;
         vel.x = _horizontalInput * _sm.speed;
         _sm.rb.velocity = vel;
         if (_sm.rb.velocity.y > 0.01f) _sm.animator.Play("Player_jump_up 0");
         else _sm.animator.Play("Player_fall 0");
         Flip();
+    }
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        if (_sm._ledgeDetection.CanLedgeClimb() && Input.GetButton("Up"))
+        {
+            stateMachine.ChangeState(_sm.playerLedgeClimb);
+            return;
+        }
+        if (_detector.IsWalled() && _sm.rb.velocity.y < 1f && Input.GetAxisRaw("Horizontal") != 0 && _wallDetector.AttachObj != null)
+        {
+            stateMachine.ChangeState(_sm.wallJumpState);
+            return;
+        }
+        if (_detector.IsGrounded())
+        {
+            if (_horizontalInput > Mathf.Epsilon)
+            {
+                stateMachine.ChangeState(_sm.movingState);
+                return;
+            }
+            else stateMachine.ChangeState(_sm.idleState);
+        }
+
+       
 
     }
     public override void Exit()

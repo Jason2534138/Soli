@@ -11,7 +11,7 @@ public class PlayerWallJumpState : BaseState
     private float _gravity;
     private float exitTimer;
     private WallDetector _wallDetector;
-
+    private bool _ledgeClimb = false;
     private GameObject collisionObj;
     public PlayerWallJumpState(PlayerMovementSM stateMachine) : base("PlayerWallJumpState", stateMachine)
     {
@@ -69,11 +69,22 @@ public class PlayerWallJumpState : BaseState
             }
         }
     }
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        if (!_sm._ledgeDetection._boxCollider2D.IsTouchingLayers(_detector.groundLayer) && Input.GetButton("Up"))
+        {
+            _ledgeClimb = true;
+            stateMachine.ChangeState(_sm.playerLedgeClimb);
+            return;
+        }
+    }
     public override void Exit()
     {
         base.Exit();
         _sm.rb.gravityScale = _gravity;
-        _sm.transform.parent = null;    
+        if(!_ledgeClimb)_sm.transform.parent = null;
+        _ledgeClimb = false;
     }
     private void Flip()
     {

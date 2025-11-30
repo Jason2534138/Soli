@@ -30,6 +30,8 @@ public class PlayerMovementSM : StateMachine, IDamageable
     public PlayerDashAttack dashAttack;
     [HideInInspector]
     public PlayerWallJumpState wallJumpState;
+    [HideInInspector]
+    public PlayerLedgeClimb playerLedgeClimb;
     #endregion
     [HideInInspector]
     public bool isFacingRight = true;
@@ -52,9 +54,9 @@ public class PlayerMovementSM : StateMachine, IDamageable
     [HideInInspector]
     public int _jumpLeft;
 
-    
+    public  LedgeDetection _ledgeDetection;
 
-
+    public bool _actionOver = false;
 
 
     private void Awake()
@@ -64,7 +66,7 @@ public class PlayerMovementSM : StateMachine, IDamageable
         _mp = GetComponent<MP>();
         _playerHealth = GetComponent<Health>();
         _playerHealth.SetUp(100);
-        
+        _ledgeDetection = GetComponentInChildren<LedgeDetection>();
            
     }
     protected override BaseState GetInitialState()
@@ -103,5 +105,10 @@ public class PlayerMovementSM : StateMachine, IDamageable
         hurtState = new PlayerHurtkState(this);
         dashing = new PlayerDashing(this);
         wallJumpState = new PlayerWallJumpState(this);
+        playerLedgeClimb = new PlayerLedgeClimb(this);
+    }
+    public void ActionOver()
+    {
+        _actionOver = true;
     }
 }
