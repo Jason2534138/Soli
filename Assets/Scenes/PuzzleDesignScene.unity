@@ -49649,7 +49649,7 @@ GameObject:
   - component: {fileID: 1284353747}
   m_Layer: 6
   m_Name: ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234442,6 +234442,10 @@ PrefabInstance:
     - target: {fileID: 1929807628762069024, guid: 5f0bbdae35431bb43992b1b926c11ba4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013859905862623004, guid: 5f0bbdae35431bb43992b1b926c11ba4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3671020723254606469, guid: 5f0bbdae35431bb43992b1b926c11ba4, type: 3}
       propertyPath: _jumpForce

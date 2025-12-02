@@ -32,7 +32,9 @@ public class StateMachine : MonoBehaviour
     {
         currentState.Exit();
         currentState = newState;
+        Debug.Log(newState);
         currentState.Enter();
+        return;
     }
 
       protected virtual BaseState GetInitialState()

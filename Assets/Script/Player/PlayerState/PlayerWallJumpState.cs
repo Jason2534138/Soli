@@ -11,7 +11,7 @@ public class PlayerWallJumpState : BaseState
     private float _gravity;
     private float exitTimer;
     private WallDetector _wallDetector;
-
+    private bool _ledgeClimb = false;
     private GameObject collisionObj;
     public PlayerWallJumpState(PlayerMovementSM stateMachine) : base("PlayerWallJumpState", stateMachine)
     {
@@ -30,15 +30,10 @@ public class PlayerWallJumpState : BaseState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        Flip();
+        
         _sm.animator.Play("Player_wall");
         _horizontalInput = Input.GetAxis("Horizontal");
-        if (_sm.isFacingRight && _horizontalInput < 0f || !_sm.isFacingRight && _horizontalInput > 0f)
-        {
-            exitTimer -= Time.deltaTime;
-            if (exitTimer < 0f) stateMachine.ChangeState(_sm.airState);
-        }
-        else exitTimer = 0.08f;
+        
         if (_detector.IsGrounded())
         {
             stateMachine.ChangeState(_sm.idleState);
@@ -46,6 +41,7 @@ public class PlayerWallJumpState : BaseState
         
         if (Input.GetButtonDown("Jump"))
         {
+            
             if (_sm._wallJumpLeft > 0)
             {
                 _sm._wallJumpLeft -= 1;
@@ -55,6 +51,7 @@ public class PlayerWallJumpState : BaseState
                 //vel.x = _sm.transform.localScale.x * -10f;
                 ((PlayerMovementSM)stateMachine).rb.velocity = vel;
                 stateMachine.ChangeState(_sm.airState);
+                Flip();
             }
             else if(_sm._jumpLeft > 0)
             {
@@ -66,14 +63,36 @@ public class PlayerWallJumpState : BaseState
                 //vel.x = _sm.transform.localScale.x * -10f;
                 ((PlayerMovementSM)stateMachine).rb.velocity = vel;
                 stateMachine.ChangeState(_sm.airState);
+                Flip();
             }
+        }
+    }
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        if (!_detector.IsWalled())
+        {
+            exitTimer -= Time.deltaTime;
+            if (exitTimer < 0f) stateMachine.ChangeState(_sm.airState);
+        }
+        else exitTimer = 0.08f;
+        if (Input.GetButtonDown("Down"))
+        {
+            stateMachine.ChangeState(_sm.airState);
+        }
+        if (_sm._ledgeDetection.CanLedgeClimb() && Input.GetButton("Up"))
+        {
+            _ledgeClimb = true;
+            stateMachine.ChangeState(_sm.playerLedgeClimb);
+            return;
         }
     }
     public override void Exit()
     {
         base.Exit();
         _sm.rb.gravityScale = _gravity;
-        _sm.transform.parent = null;    
+        if(!_ledgeClimb)_sm.transform.parent = null;
+        _ledgeClimb = false;
     }
     private void Flip()
     {

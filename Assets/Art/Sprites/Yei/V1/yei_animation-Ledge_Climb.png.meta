@@ -1,0 +1,303 @@
+fileFormatVersion: 2
+guid: 2e15314eec634c748bc7a56c136b3778
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: yei_animation-Ledge_Climb_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 273
+        height: 176
+      alignment: 9
+      pivot: {x: 0.48275918, y: 0.44651392}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b65a95e8f149b4e46a6ac7efd6cc61b1
+      internalID: -1666036493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yei_animation-Ledge_Climb_1
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 0
+        width: 273
+        height: 176
+      alignment: 9
+      pivot: {x: 0.49042174, y: 0.42274234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3680119db83cfc428665621ea239ec8
+      internalID: 1955564784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yei_animation-Ledge_Climb_2
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 0
+        width: 273
+        height: 176
+      alignment: 9
+      pivot: {x: 0.40421706, y: 0.4049136}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff3a30f5afb46449afd1c11e9076bfa
+      internalID: -451259438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yei_animation-Ledge_Climb_3
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 0
+        width: 273
+        height: 176
+      alignment: 9
+      pivot: {x: 0.3686168, y: 0.3107838}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d96beb280f03ba645b2d0b14129e31b5
+      internalID: -1261884959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yei_animation-Ledge_Climb_4
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 0
+        width: 273
+        height: 176
+      alignment: 9
+      pivot: {x: 0.269119, y: -0.14364985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d2535fc24141f488972dceb313ebbb
+      internalID: 814818828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yei_animation-Ledge_Climb_5
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 0
+        width: 273
+        height: 176
+      alignment: 9
+      pivot: {x: 0.269119, y: -0.101291366}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f039ce215012de46bdfa1b5dee9367c
+      internalID: -883838862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yei_animation-Ledge_Climb_6
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 0
+        width: 273
+        height: 176
+      alignment: 9
+      pivot: {x: 0.2812558, y: -0.16247584}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ea9b08d6f38424ea0356ca6a6fe0cb
+      internalID: 1556861223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yei_animation-Ledge_Climb_7
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 0
+        width: 273
+        height: 176
+      alignment: 9
+      pivot: {x: 0.2812558, y: -0.18130183}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb7dd2ac14656ff408c7581b64d0d175
+      internalID: -11217276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      yei_animation-Ledge_Climb_0: -1666036493
+      yei_animation-Ledge_Climb_1: 1955564784
+      yei_animation-Ledge_Climb_2: -451259438
+      yei_animation-Ledge_Climb_3: -1261884959
+      yei_animation-Ledge_Climb_4: 814818828
+      yei_animation-Ledge_Climb_5: -883838862
+      yei_animation-Ledge_Climb_6: 1556861223
+      yei_animation-Ledge_Climb_7: -11217276
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

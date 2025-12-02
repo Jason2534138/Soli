@@ -10,32 +10,14 @@ public class Detector : MonoBehaviour
     public Vector2 groundDetectOffset;
     public LayerMask groundLayer;
 
-    public Vector2 wallBoxSize;
-    public float wallCastDistance;
+    public BoxCollider2D boxCollider;
     public bool IsWalled()
     {
-        if (this.transform.localScale.x > 0)
+        if (boxCollider.IsTouchingLayers(groundLayer))
         {
-            if (Physics2D.BoxCast(transform.position, wallBoxSize, 0, transform.right, wallCastDistance, groundLayer))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return true;
         }
-        else
-        {
-            if (Physics2D.BoxCast(transform.position, wallBoxSize, 0, -transform.right, wallCastDistance, groundLayer))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        else return false;
 
     }
     public bool IsGrounded()
@@ -53,7 +35,7 @@ public class Detector : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position + (Vector3)groundDetectOffset - transform.up * castDistance, boxSize);
-        Gizmos.DrawWireCube(transform.position+transform.right * wallCastDistance, wallBoxSize);
+        
     }
 
     internal bool IsTouchingWall()

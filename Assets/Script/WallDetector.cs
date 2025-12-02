@@ -8,7 +8,9 @@ public class WallDetector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Prop") || collision.CompareTag("Ground"))
+        {
         AttachObj = collision.gameObject;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
