@@ -29,6 +29,7 @@ public class CrocBaseState : BaseState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        if(_sm.attackTimer > 0f)_sm.attackTimer -= Time.deltaTime;
     }
     
     protected void Flip()

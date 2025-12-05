@@ -7,7 +7,7 @@ public class CrocAggroState : CrocBaseState
 {
     private float _timer;
     private GameObject target;
-
+    
     public CrocAggroState(CrocSM stateMachine) : base("CrocAggroState", stateMachine) { }
     public override void Enter()
     {
@@ -26,9 +26,9 @@ public class CrocAggroState : CrocBaseState
         {
             stateMachine.ChangeState(_sm.crocIdleState);
         }
-        if ((_sm.transform.position.x > target.transform.position.x && _sm._isFacingRight) || (_sm.transform.position.x < target.transform.position.x && !_sm._isFacingRight)) Flip();
+        if ((_sm.transform.position.x - target.transform.position.x > 5f && _sm._isFacingRight) || (_sm.transform.position.x - target.transform.position.x < -5f && !_sm._isFacingRight)) Flip();
         _rb.velocity = new Vector2(_sm._isFacingRight ? 6f : -6f, _rb.velocity.y);
-        if (_sm._attackDetection_bite.hasAttackTarget || _sm._attackDetection_spike.hasAttackTarget  || _sm._attackDetection_charge.hasAttackTarget)
+        if ((_sm._attackDetection_bite.hasAttackTarget || _sm._attackDetection_spike.hasAttackTarget  || _sm._attackDetection_charge.hasAttackTarget) && _sm.attackTimer <= 0f)
         {
             stateMachine.ChangeState(_sm.crocAttackState);
         }
@@ -40,6 +40,7 @@ public class CrocAggroState : CrocBaseState
     public override void Exit()
     {
         base.Exit();
+        
     }
 
 }

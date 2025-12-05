@@ -9,7 +9,7 @@ public class FlyAggroState : FlyBaseState
 
     private float aggroTimeMax = 5f;
     private float aggroTimer;
-    private float attackCD = 5f;
+    private float attackCD = 1f;
     private float attackCDTimer;
     private GameObject _target;
     

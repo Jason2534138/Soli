@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrocSM : StateMachine
+public class CrocSM : StateMachine, IDamageable
 {
     public bool actionOver = false;
+
+    public float AttackCD = 3f;
+    public float attackTimer = 0f;
 
     public CrocSM _sm;
     public Animator _animator;
@@ -36,7 +39,7 @@ public class CrocSM : StateMachine
     {
         _playerDetection = GetComponentInChildren<PlayerDetection>();
         _health = GetComponent<Health>();
-        _health.SetUp(100);
+        _health.SetUp(_health.HP);
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _isFacingRight = false;
@@ -54,10 +57,16 @@ public class CrocSM : StateMachine
     }
     protected void Die()
     {
-
+        Destroy(this.gameObject);
     }
     public virtual void ActionOver()
     {
         actionOver = true;
+    }
+
+    public void OnHit(int damage)
+    {
+        _health.healthSystem.Damage(damage);
+        Debug.Log(_health.healthSystem.GetHealth());
     }
 }

@@ -46,6 +46,11 @@ public class CrocAttackState : CrocBaseState
         }
 
     }
+    public override void Exit()
+    {
+        base.Exit();
+        _sm.attackTimer = _sm.AttackCD;
+    }
     private void Bite()
     {
         _rb.velocity = Vector2.zero;
@@ -60,7 +65,7 @@ public class CrocAttackState : CrocBaseState
     {
         _animator.Play("Car_DashAttack");
         _rb.velocity = new Vector2(_sm._isFacingRight ? 24f : -24f, _rb.velocity.y);
-        if ((_sm.transform.position.x > target.transform.position.x && _sm._isFacingRight) || (_sm.transform.position.x < target.transform.position.x && !_sm._isFacingRight)) Flip();
+        if ((_sm.transform.position.x - target.transform.position.x > 5f && _sm._isFacingRight) || (_sm.transform.position.x - target.transform.position.x  < -5f && !_sm._isFacingRight)) Flip();
         if (_sm._attackDetection_bite.hasAttackTarget)
         {
             _attackIndex = 0;
@@ -70,6 +75,6 @@ public class CrocAttackState : CrocBaseState
     {
         base.ActionOver();
         stateMachine.ChangeState(_sm.crocAggroState);
-        Debug.Log("attackOver");
+        
     }
 }

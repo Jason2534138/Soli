@@ -111,7 +111,11 @@ MonoBehaviour:
   damage: 0
   stun: 0
   knockBack: {x: 0, y: 0}
-  isBlocked: 0
+  canBlock: 0
+  canAttack: 1
+  AttackConnect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4005116164069907592
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +218,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353166707
-  m_SortingLayer: 3
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 1062350040, guid: e5b7a822801179945ae8a6d78991469b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -686,4 +690,8 @@ MonoBehaviour:
   damage: 10
   stun: 0
   knockBack: {x: 5, y: 5}
-  isBlocked: 0
+  canBlock: 0
+  canAttack: 1
+  AttackConnect:
+    m_PersistentCalls:
+      m_Calls: []
