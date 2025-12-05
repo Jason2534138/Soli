@@ -32,7 +32,7 @@ public class StateMachine : MonoBehaviour
     {
         currentState.Exit();
         currentState = newState;
-        //Debug.Log(newState);
+        Debug.Log(newState);
         currentState.Enter();
         return;
     }
