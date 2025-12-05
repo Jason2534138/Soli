@@ -40,7 +40,7 @@ public class FlySM : StateMachine
         _health.SetUp(100);
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _playerDetection = GetComponentInChildren<PlayerDetection>();
+        
         flyIdleState = new FlyIdleState(this);
         flyAggroState = new FlyAggroState(this);
         flyAttackState = new FlyAttackState(this);
