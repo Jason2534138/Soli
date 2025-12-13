@@ -63,6 +63,9 @@ TagManager:
   - name: Ground
     uniqueID: 4184307421
     locked: 0
+  - name: Prop
+    uniqueID: 1986931965
+    locked: 0
   - name: Enemy
     uniqueID: 2941800589
     locked: 0
@@ -74,7 +77,4 @@ TagManager:
     locked: 0
   - name: Background01
     uniqueID: 3712705353
-    locked: 0
-  - name: New Layer 10
-    uniqueID: 1986931965
     locked: 0

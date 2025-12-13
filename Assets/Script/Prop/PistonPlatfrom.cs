@@ -23,7 +23,8 @@ public class PistonPlatfrom : MonoBehaviour, IControllableProp
         _isBlocked = _blockingObject <= 0? false : true;
         if (Vector2.Distance(this.transform.position, _path[current].position) > 0.1f && !_isBlocked) 
         {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, _speed / 10);
+            float step = _speed * Time.deltaTime;
+            this.transform.position = Vector2.MoveTowards(this.transform.position, _path[current].position, step);
         }
         
         
