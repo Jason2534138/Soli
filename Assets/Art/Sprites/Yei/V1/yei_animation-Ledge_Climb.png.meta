@@ -181,7 +181,7 @@ TextureImporter:
         width: 273
         height: 176
       alignment: 9
-      pivot: {x: 0.3686168, y: 0.3107838}
+      pivot: {x: 0.3716509, y: 0.4049136}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,7 +202,7 @@ TextureImporter:
         width: 273
         height: 176
       alignment: 9
-      pivot: {x: 0.269119, y: -0.14364985}
+      pivot: {x: 0.27215284, y: 0.0069579976}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,7 +223,7 @@ TextureImporter:
         width: 273
         height: 176
       alignment: 9
-      pivot: {x: 0.269119, y: -0.101291366}
+      pivot: {x: 0.2721528, y: 0.006957998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: yei_animation-Ledge_Climb_6
       rect:
         serializedVersion: 2
-        x: 1641
+        x: 1639
         y: 0
         width: 273
         height: 176
       alignment: 9
-      pivot: {x: 0.2812558, y: -0.16247584}
+      pivot: {x: 0.2721528, y: 0.006957998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,7 +265,7 @@ TextureImporter:
         width: 273
         height: 176
       alignment: 9
-      pivot: {x: 0.2812558, y: -0.18130183}
+      pivot: {x: 0.2721528, y: 0.006957998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
