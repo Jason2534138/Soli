@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
       name: scene02_L01_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4129
         y: 0
-        width: 4843
-        height: 1264
+        width: 651
+        height: 313
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 4091, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -121,12 +121,12 @@ TextureImporter:
       name: scene02_L01_1
       rect:
         serializedVersion: 2
-        x: 752
-        y: 2
-        width: 641
-        height: 1066
+        x: 1061
+        y: 0
+        width: 867
+        height: 1146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,10 +142,10 @@ TextureImporter:
       name: scene02_L01_2
       rect:
         serializedVersion: 2
-        x: 1393
-        y: 12
-        width: 780
-        height: 445
+        x: 4779
+        y: 0
+        width: 1412
+        height: 1084
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,12 +163,12 @@ TextureImporter:
       name: scene02_L01_3
       rect:
         serializedVersion: 2
-        x: 2172
+        x: 2054
         y: 0
-        width: 591
-        height: 511
+        width: 706
+        height: 1160
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: scene02_L01_4
       rect:
         serializedVersion: 2
-        x: 2784
+        x: 2758
         y: 0
-        width: 693
-        height: 314
+        width: 764
+        height: 321
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: scene02_L01_5
       rect:
         serializedVersion: 2
-        x: 3493
+        x: 3523
         y: 0
-        width: 370
-        height: 406
+        width: 389
+        height: 102
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,36 +223,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene02_L01_6
-      rect:
-        serializedVersion: 2
-        x: 3909
-        y: 191
-        width: 571
-        height: 836
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 089d54387e617d640ad39ff0787f1cc9
-      internalID: -1817526952
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: scene02_L01_7
       rect:
         serializedVersion: 2
-        x: 3902
+        x: 3864
         y: 0
-        width: 941
-        height: 467
+        width: 226
+        height: 473
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
