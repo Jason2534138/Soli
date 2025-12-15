@@ -47,6 +47,7 @@ public class FootSM : StateMachine, IDamageable, IBlockable
     public void OnHit(int damage)
     {
         _health.healthSystem.Damage(damage);
+        Debug.Log(_health.healthSystem.GetHealth());
         ChangeState(footHit);
         
     }
@@ -69,6 +70,11 @@ public class FootSM : StateMachine, IDamageable, IBlockable
         footDeath = new FootDeath(this);
         footStun = new FootStun(this);
         footBlock = new FootBlocked(this);
+        _health.healthSystem.Die += Die;
         
+    }
+    private void Die()
+    {
+        Destroy(this.gameObject);
     }
 }

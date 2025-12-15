@@ -64,9 +64,7 @@ public class PlayerMovementSM : StateMachine, IDamageable
         //rb = GetComponent<Rigidbody2D>();
         SetUp();
         _mp = GetComponent<MP>();
-        _playerHealth = GetComponent<Health>();
-        _playerHealth.SetUp(100);
-        _ledgeDetection = GetComponentInChildren<LedgeDetection>();
+        
            
     }
     protected override BaseState GetInitialState()
@@ -94,6 +92,9 @@ public class PlayerMovementSM : StateMachine, IDamageable
     }
     private void SetUp()
     {
+        _playerHealth = GetComponent<Health>();
+        _playerHealth.SetUp(_playerHealth.HP);
+        _ledgeDetection = GetComponentInChildren<LedgeDetection>();
         idleState = new PlayerIdle(this);
         blockAttackState = new PlayerBlockAttackState(this);
         movingState = new PlayerMoving(this);
@@ -106,9 +107,16 @@ public class PlayerMovementSM : StateMachine, IDamageable
         dashing = new PlayerDashing(this);
         wallJumpState = new PlayerWallJumpState(this);
         playerLedgeClimb = new PlayerLedgeClimb(this);
+        
+        _playerHealth.healthSystem.Die += Die;
     }
     public void ActionOver()
     {
         _actionOver = true;
+    }
+    private void Die()
+    {
+        Destroy(this.gameObject);
+        UnityEditor.EditorApplication.ExitPlaymode();
     }
 }

@@ -48,7 +48,11 @@ MonoBehaviour:
   damage: 10
   stun: 0
   knockBack: {x: 10, y: 0}
-  isBlocked: 0
+  canBlock: 0
+  canAttack: 1
+  AttackConnect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1348094510611393061
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -285,7 +289,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1353166707
-  m_SortingLayer: 3
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 564db0fc5ed09b943a3f8ec36f6406ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -416,6 +420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da62bf3715c2e546afd7965a8b89d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _offset: {x: 12, y: 6}
+  attackDir: {x: 1, y: -1}
   patrolPoints:
   - {fileID: 6729556059828490847}
   - {fileID: 1084949149669743956}

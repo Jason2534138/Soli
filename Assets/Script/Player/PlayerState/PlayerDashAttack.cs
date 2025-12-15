@@ -17,7 +17,7 @@ public class PlayerDashAttack : BaseState
     {
         base.Enter();
         Vector2 vel = _sm.rb.velocity;
-        vel.x += _sm.transform.lossyScale.x > 0 ? 5f : -5f;
+        vel.x += _sm.isFacingRight ? 50f : -50f;
         _sm.rb.velocity = vel;
         _timer = 0f;
         _sm.animator.Play("Player_dash_attack");
@@ -28,10 +28,11 @@ public class PlayerDashAttack : BaseState
     {
         base.LogicUpdate();
         _timer += Time.deltaTime;
-        Vector2 x;
-        x = _sm.rb.velocity;
-        x.x -= Time.deltaTime;
-        _sm.rb.velocity = x;
+        if (_sm._actionOver)
+        {
+            _sm._actionOver = false;
+            _sm.rb.velocity = Vector2.zero;
+        }
         if (_timer > 0.7f) _sm.ChangeState(_sm.idleState);
     }
 

@@ -7,7 +7,7 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.SubsystemsImplementation;
 
-public class Blade : StateMachine
+public class Blade : StateMachine, IDamageable
 {
     //此為敵人的狀態腳本，此腳本只負責聲明與切換各種狀態。
     //實際功能會在各狀態中。
@@ -54,9 +54,19 @@ public class Blade : StateMachine
         bladeStunState = new BladeStunState(this);
         bladeAirState = new BladeAirState(this);
         //基本物件
+        _health.healthSystem.Die += Die;
 
 
+    }
 
+    public void OnHit(int damage)
+    {
+        _health.healthSystem.Damage(damage);
+        Debug.Log(_health.healthSystem.GetHealth());
+    }
+    private void Die()
+    {
+        Destroy(this.gameObject);
     }
 }
 

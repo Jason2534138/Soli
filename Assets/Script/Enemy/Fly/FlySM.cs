@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlySM : StateMachine
+public class FlySM : StateMachine,IDamageable
 {
     [HideInInspector]
     public FlyIdleState flyIdleState;
@@ -40,7 +40,7 @@ public class FlySM : StateMachine
         _health.SetUp(100);
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _playerDetection = GetComponentInChildren<PlayerDetection>();
+        
         flyIdleState = new FlyIdleState(this);
         flyAggroState = new FlyAggroState(this);
         flyAttackState = new FlyAttackState(this);
@@ -49,5 +49,11 @@ public class FlySM : StateMachine
     private void die()
     {
         Destroy(this.gameObject);
+    }
+
+    public void OnHit(int damage)
+    {
+        _health.healthSystem.Damage(damage);
+        Debug.Log(_health.healthSystem.GetHealth());
     }
 }

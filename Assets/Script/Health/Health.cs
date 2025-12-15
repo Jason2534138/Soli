@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] int HP;
+    [SerializeField] public int HP;
     public HealthSystem healthSystem;
     public void SetUp(int Health)
     {
