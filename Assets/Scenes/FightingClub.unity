@@ -358,18 +358,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Croc
       objectReference: {fileID: 0}
-    - target: {fileID: 5504274219034725979, guid: 9f91d333f4190c2468b928605f5b42f6, type: 3}
-      propertyPath: HP
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6171427719856897005, guid: 9f91d333f4190c2468b928605f5b42f6, type: 3}
-      propertyPath: damage
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312562181526978388, guid: 9f91d333f4190c2468b928605f5b42f6, type: 3}
-      propertyPath: damage
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 8528547204373270996, guid: 9f91d333f4190c2468b928605f5b42f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 89.4
@@ -1565,8 +1553,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -110659875
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
@@ -20241,7 +20229,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1416664616818634096, guid: 5f0bbdae35431bb43992b1b926c11ba4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1416664616818634096, guid: 5f0bbdae35431bb43992b1b926c11ba4, type: 3}
       propertyPath: m_LocalPosition.y

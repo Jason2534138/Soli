@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: scene-03-1_L05_0
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 1503
+        width: 2391
+        height: 1141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6974fa001b36f144b9959b6cfe1919f4
+      internalID: -874813705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene-03-1_L05_1
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 122
+        width: 989
+        height: 729
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 870278d85b1d2f14eb4d11c22c7871db
+      internalID: 664372681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene-03-1_L05_2
+      rect:
+        serializedVersion: 2
+        x: 1836
+        y: 89
+        width: 1465
+        height: 1132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18e929cc30cfc214186712468719ccf7
+      internalID: 1684421427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +169,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      scene-03-1_L05_0: -874813705
+      scene-03-1_L05_1: 664372681
+      scene-03-1_L05_2: 1684421427
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
