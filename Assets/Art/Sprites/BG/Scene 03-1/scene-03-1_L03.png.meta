@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -163,10 +163,10 @@ TextureImporter:
       name: scene-03-1_L03_3
       rect:
         serializedVersion: 2
-        x: 3005
+        x: 3056
         y: 415
-        width: 1312
-        height: 474
+        width: 1261
+        height: 472
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +268,10 @@ TextureImporter:
       name: scene-03-1_L03_8
       rect:
         serializedVersion: 2
-        x: 3391
-        y: 1667
-        width: 1434
-        height: 289
+        x: 3400
+        y: 1674
+        width: 1425
+        height: 255
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,27 +281,6 @@ TextureImporter:
       bones: []
       spriteID: 9ac4aa451998c3146b1062e5deebbc7e
       internalID: -1526215689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scene-03-1_L03_9
-      rect:
-        serializedVersion: 2
-        x: 2755
-        y: 1327
-        width: 920
-        height: 1317
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 300d1600555aa1543840d7032a155545
-      internalID: 1098954263
       vertices: []
       indices: 
       edges: []
@@ -328,22 +307,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene-03-1_L03_11
+      name: scene-03-1_L03_9
       rect:
         serializedVersion: 2
-        x: 858
-        y: 1460
-        width: 424
-        height: 1184
+        x: 2898
+        y: 206
+        width: 149
+        height: 789
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdfac074c99089544b36632a9c44aba3
-      internalID: 1799666050
+      spriteID: 463498243ac037f4182b0b790389a5ed
+      internalID: 1098954263
       vertices: []
       indices: 
       edges: []
