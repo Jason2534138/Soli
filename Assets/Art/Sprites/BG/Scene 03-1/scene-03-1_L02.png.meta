@@ -124,7 +124,7 @@ TextureImporter:
         x: 668
         y: 229
         width: 194
-        height: 318
+        height: 199
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,6 +266,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: scene-03-1_L02_7
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 428
+        width: 194
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403b16fbe3ee80d43a9aa896f3f7e815
+      internalID: -1997977326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -284,6 +305,7 @@ TextureImporter:
       scene-03-1_L02_4: 437691676
       scene-03-1_L02_5: 1357495804
       scene-03-1_L02_6: -1586575394
+      scene-03-1_L02_7: -1997977326
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

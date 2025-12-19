@@ -81,15 +81,15 @@ public class PlayerGroundCombo : PlayerAttackState
                 case Attacks.attack0:
                     _sm.animator.Play("Player_attack_combo1_1");
 
-                    _comboTimeMax = 0.29f;
-                    _comboTimeMin = 0.21f;
+                    _comboTimeMax = 0.4f;
+                    _comboTimeMin = 0.2f;
 
 
                 break;
                 case Attacks.attack1:
                     _sm.animator.Play("Player_attack_combo1_2");
-                    _comboTimeMax = 0.29f;
-                _comboTimeMin = 0.21f;
+                    _comboTimeMax = 0.5f;
+                _comboTimeMin = 0.3f;
 
                 
                 break;
