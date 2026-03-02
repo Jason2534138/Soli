@@ -117,6 +117,5 @@ public class PlayerMovementSM : StateMachine, IDamageable
     private void Die()
     {
         Destroy(this.gameObject);
-        UnityEditor.EditorApplication.ExitPlaymode();
     }
 }

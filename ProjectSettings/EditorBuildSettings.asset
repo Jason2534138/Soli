@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/scene1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/Menu/Menu.unity
+    guid: 6b35443781d3b3c43b5b8d921a5c48fd
+  - enabled: 1
+    path: Assets/Scenes/FightingClub.unity
+    guid: 93c1c721d4c492341b0a8b78c14814f2
+  - enabled: 1
     path: Assets/Scenes/PuzzleTestScene.unity
     guid: 292b876b71f25364eb727fd6070747d9
   m_configObjects: {}
